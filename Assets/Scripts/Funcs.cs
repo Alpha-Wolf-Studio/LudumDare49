@@ -6,6 +6,11 @@ public class Funcs : MonoBehaviour
 
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private LayerMask playeplatformLayerMask;
+
+    private void Awake()
+    {
+        _funcs = this;
+    }
     public bool LayerEqualPlayer(int layer)
     {
         return playerLayerMask == (playerLayerMask | (1 << layer));

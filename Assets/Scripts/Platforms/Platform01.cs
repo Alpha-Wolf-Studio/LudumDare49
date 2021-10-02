@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Platform01 : MonoBehaviour
+public class Platform01 : MonoBehaviour, IPlatform
 {
     [SerializeField] PlatformBase basePlatform;
     private bool firstCollision;
@@ -23,5 +23,10 @@ public class Platform01 : MonoBehaviour
                 rb.isKinematic = false;
             }
         }
+    }
+
+    void IPlatform.DestroyBase() 
+    {
+        basePlatform.DestroyPlatform();
     }
 }

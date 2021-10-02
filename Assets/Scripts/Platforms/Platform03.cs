@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Platform03 : MonoBehaviour
+public class Platform03 : MonoBehaviour, IPlatform
 {
     [SerializeField] PlatformBase basePlatform;
     Rigidbody2D rb;
@@ -14,5 +14,10 @@ public class Platform03 : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
+    }
+
+    void IPlatform.DestroyBase()
+    {
+        basePlatform.DestroyPlatform();
     }
 }
