@@ -21,7 +21,7 @@ public class CameraMovement : MonoBehaviour
 
     void Movement()
     {
-        transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y);
+        transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
 
         speed += incrementalSpeed * Time.deltaTime;
     }
