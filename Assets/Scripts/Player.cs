@@ -6,19 +6,72 @@ public class Player : MonoBehaviour
     public Action onDie;
     public Action onJump;
     public Action onDoubleJump;
-    [SerializeField] private float vida = 5;
+    private BoxCollider2D box;
+    private Rigidbody2D rb;
+    [SerializeField] private int maxJumps = 2;
+    [SerializeField] private bool isAlive = true;
+    [SerializeField] private float speed = 5.0f;
+    [SerializeField] private int jumps = 0;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] LayerMask platformLayers;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        box = GetComponent<BoxCollider2D>();
+    }
 
     void Start()
     {
-        
+
     }
+
     void Update()
     {
-        if (vida < 0)
-            onDie?.Invoke();    // Siempre poner el "?" cuando se llama a un evento.
+        Movement();
     }
-    private void OnDestroy()
-    {
 
+    private void Movement()
+    {
+        if (isGrounded)
+        {
+            jumps = 0;
+        }
+
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.W)) && jumps < maxJumps-1)
+        {
+            jumps++;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+        else
+        {
+            isGrounded = GroundCheck();
+        }
+
+        HandleMovement();
+    }
+
+    private bool GroundCheck()
+    {
+        RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, Vector3.down, box.bounds.size.y, platformLayers);
+        return raycastHit2D;
+    }
+
+    private void HandleMovement()
+    {
+        float midAirControl = 1.5f;
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            rb.velocity = new Vector2(+speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
     }
 }
