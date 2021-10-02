@@ -11,6 +11,10 @@ public class SceneManager : MonoBehaviourSingleton<SceneManager>
     {
         StartCoroutine(AsynchronousLoadWithFake(sceneName, textInBetween));
     }
+    public void LoadSceneAsync(string sceneName)
+    {
+        StartCoroutine(AsynchronousLoadWithFake(sceneName, ""));
+    }
 
     IEnumerator AsynchronousLoadWithFake(string scene, string textInBetween)
     {
