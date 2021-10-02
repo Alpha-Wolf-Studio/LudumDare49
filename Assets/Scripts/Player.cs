@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
         }
         if (!isAlive)
         {
+            onDie?.Invoke();
             isAlive = true;
             rb.position = initialPosition;
         }
