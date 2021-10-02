@@ -2,15 +2,18 @@
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Player player;
+
     void Start()
     {
-        
+        player.onDie += PlayerDie;
     }
-
-    // Update is called once per frame
     void Update()
     {
         
+    }
+    void PlayerDie()
+    {
+
     }
 }
