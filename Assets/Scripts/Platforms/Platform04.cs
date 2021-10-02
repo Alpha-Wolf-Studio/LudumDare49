@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Platform04 : MonoBehaviour
+public class Platform04 : MonoBehaviour, IPlatform
 {
     [SerializeField] PlatformBase basePlatform;
     [SerializeField] private SpriteRenderer image;
@@ -59,5 +59,9 @@ public class Platform04 : MonoBehaviour
                 }
             }
         }
+    }
+    void IPlatform.DestroyBase()
+    {
+        basePlatform.DestroyPlatform();
     }
 }

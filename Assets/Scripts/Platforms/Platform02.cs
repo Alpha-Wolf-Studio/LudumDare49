@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
-public class Platform02 : MonoBehaviour
+public class Platform02 : MonoBehaviour, IPlatform
 {
     [SerializeField] PlatformBase basePlatform;
     [SerializeField] private SpriteRenderer image;
@@ -43,6 +43,11 @@ public class Platform02 : MonoBehaviour
             image.color = Color.Lerp(colorStart, colorEnd, onTimeAlive / maxTimeAlive);
             yield return null;
         }
+        basePlatform.DestroyPlatform();
+    }
+
+    void IPlatform.DestroyBase()
+    {
         basePlatform.DestroyPlatform();
     }
 }
