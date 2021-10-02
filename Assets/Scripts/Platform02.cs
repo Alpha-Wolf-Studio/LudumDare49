@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 public class Platform02 : MonoBehaviour
 {
-    [SerializeField] private Image image;
+    [SerializeField] private SpriteRenderer image;
     [SerializeField] private float minRandom = 1.2f;
     [SerializeField] private float MaxRandom = 3.0f;
     [SerializeField] private float maxTimeAlive;
@@ -15,6 +14,9 @@ public class Platform02 : MonoBehaviour
 
     private void Start()
     {
+        if (!image)
+            Debug.LogWarning("Imagen no seteada en el Prefab Platform02.", gameObject);
+
         if (maxTimeAlive == 0)
         {
             maxTimeAlive = Random.Range(minRandom, MaxRandom);
@@ -25,10 +27,10 @@ public class Platform02 : MonoBehaviour
     {
         if (!firstCollision)
         {
-            if(other.gameObject.CompareTag("Player"))
+            if (other.gameObject.CompareTag("Player"))
             {
                 firstCollision = true;
-                StartDestroy();
+                StartCoroutine(StartDestroy());
             }
         }
     }

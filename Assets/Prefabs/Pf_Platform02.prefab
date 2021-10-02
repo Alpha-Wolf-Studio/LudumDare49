@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0152e14f03efb4ba7beab92dcba15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 8628768609233587952}
   minRandom: 1.2
   MaxRandom: 3
   maxTimeAlive: 0
