@@ -11,9 +11,9 @@ public class Platform03 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.GetComponent<Player>()) 
+        if (collision.collider.GetComponent<Player>())
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
