@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 public class Platform04 : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer image;

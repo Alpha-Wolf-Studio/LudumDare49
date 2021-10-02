@@ -24,25 +24,29 @@ public class CameraMovement : MonoBehaviour
         }
         player.onDie += ResetPosition;
     }
-    void Update()
+    private void Update()
     {
         Movement();
-    }
-    void Movement()
+    } 
+    private void Movement()
     {
         float playerX = player.transform.position.x;
-        if (Mathf.Abs(playerX - transform.position.x) > catchUpDistanceX) 
+        var transf = transform;
+        Vector3 pos = transf.position;
+
+        if (Mathf.Abs(playerX - transform.position.x) > catchUpDistanceX)
         {
-            transform.position = new Vector3(transform.position.x + speed * catchUpSpeedMultiplier * Time.deltaTime, transform.position.y, transform.position.z);
+            pos = new Vector3(pos.x + speed * catchUpSpeedMultiplier * Time.deltaTime, pos.y, pos.z);
+            transf.position = pos;
         }
         else 
         {
-            transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
+            pos = new Vector3(pos.x + speed * Time.deltaTime, pos.y, pos.z);
+            transf.position = pos;
         }
         speed += incrementalSpeed * Time.deltaTime;
     }
-
-    void ResetPosition()
+    private void ResetPosition()
     {
         transform.position = startingPos;
         incrementalSpeed = startingIncrementalSpeed;

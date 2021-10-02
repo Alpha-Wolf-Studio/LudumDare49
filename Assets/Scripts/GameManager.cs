@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GameManager : MonoBehaviour
 {
     public Player player;
-
     [Header("Platforms configurations")]
     [SerializeField] Transform cameraTransform = null;
     [SerializeField] GameObject startingPlatformPrefab = null;
@@ -15,7 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] float minHeightToSpawn = -5f;
     [SerializeField] float maxHeightToSpawn = 5f;
     [SerializeField] float spawnDistanceXFromCamera = 50f;
-
 
     void Start()
     {
@@ -30,7 +27,6 @@ public class GameManager : MonoBehaviour
     {
 
     }
-
     IEnumerator PlatformSpawnCoroutine() 
     {
         Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity, transform);
@@ -51,5 +47,4 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
-
 }

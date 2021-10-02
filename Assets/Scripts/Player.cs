@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     public Action onDie;
     public Action onJump;
     public Action onDoubleJump;
+    public Action onGround;
+
     private BoxCollider2D box;
     private Rigidbody2D rb;
     [SerializeField] private int maxJumps = 2;
@@ -49,7 +51,16 @@ public class Player : MonoBehaviour
         }
         else
         {
-            isGrounded = GroundCheck();
+            if (GroundCheck())
+            {
+                isGrounded = true;
+                Debug.Log("On Grounded.");
+                //onGround?.Invoke();
+            }
+            else
+            {
+                isGrounded = false;
+            }
         }
 
         HandleMovement();

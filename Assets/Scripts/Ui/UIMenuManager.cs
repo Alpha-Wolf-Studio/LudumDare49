@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
-
 public class UIMenuManager : MonoBehaviour
 {
     [SerializeField] private CanvasGroup[] menues;
     [SerializeField] private float timeTransition;
-    [Space(10)]
-    [SerializeField] TextMeshProUGUI versionText;
+    [Space(10)] 
+    [SerializeField] private TextMeshProUGUI versionText;
 
     void Start()
     {
