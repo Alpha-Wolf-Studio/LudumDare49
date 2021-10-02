@@ -6,7 +6,9 @@ using Random = UnityEngine.Random;
 
 public class Platform01 : MonoBehaviour
 {
-    
+
+    [SerializeField] PlatformBase basePlatform;
+
     private bool firstCollision;
     Rigidbody2D rb;
 

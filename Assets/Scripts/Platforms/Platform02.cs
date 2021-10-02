@@ -3,6 +3,9 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class Platform02 : MonoBehaviour
 {
+
+    [SerializeField] PlatformBase basePlatform;
+
     [SerializeField] private SpriteRenderer image;
     [SerializeField] private float minRandom = 1.2f;
     [SerializeField] private float MaxRandom = 3.0f;
@@ -42,6 +45,6 @@ public class Platform02 : MonoBehaviour
             image.color = Color.Lerp(colorStart, colorEnd, onTimeAlive / maxTimeAlive);
             yield return null;
         }
-        Destroy(gameObject);
+        basePlatform.DestroyPlatform();
     }
 }

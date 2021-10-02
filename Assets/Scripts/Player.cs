@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
             if (GroundCheck())
             {
                 isGrounded = true;
-                Debug.Log("On Grounded.");
+                //Debug.Log("On Grounded.");
                 //onGround?.Invoke();
             }
             else

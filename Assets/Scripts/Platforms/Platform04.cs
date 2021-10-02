@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 public class Platform04 : MonoBehaviour
 {
+
+    [SerializeField] PlatformBase basePlatform;
+
     [SerializeField] private SpriteRenderer image;
     [SerializeField] private SpriteRenderer imageBar;
     private Player player;
@@ -49,7 +52,7 @@ public class Platform04 : MonoBehaviour
 
                 if (Mathf.Abs(actualx) > distance)
                 {
-                    Destroy(gameObject);
+                    basePlatform.DestroyPlatform();
                 }
                 else
                 {
@@ -58,9 +61,5 @@ public class Platform04 : MonoBehaviour
                 }
             }
         }
-    }
-    private void OnDestroy()
-    {
-        
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Platform03 : MonoBehaviour
 {
+
+    [SerializeField] PlatformBase basePlatform;
+
     Rigidbody2D rb;
 
     private void Awake()
@@ -18,4 +21,5 @@ public class Platform03 : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
+    
 }

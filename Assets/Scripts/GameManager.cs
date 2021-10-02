@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class GameManager : MonoBehaviour
@@ -14,10 +15,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] float maxHeightToSpawn = 5f;
     [SerializeField] float spawnDistanceXFromCamera = 50f;
 
+    public Action OnResetLevel;
+    IEnumerator PlatformSpawnCoroutine =  null;
+    List<PlatformBase> activePlatforms = new List<PlatformBase>();
+
     void Start()
     {
         player.onDie += PlayerDie;
-        StartCoroutine(PlatformSpawnCoroutine());
+        PlatformSpawnCoroutine = PlatformSpawn();
+        Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity, transform);
+        StartCoroutine(PlatformSpawnCoroutine);
     }
     void Update()
     {
@@ -25,26 +32,59 @@ public class GameManager : MonoBehaviour
     }
     void PlayerDie()
     {
-
+        ResetPlatforms();
     }
-    IEnumerator PlatformSpawnCoroutine() 
+
+    IEnumerator PlatformSpawn() 
     {
-        Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity, transform);
+        GameObject go;
+        PlatformBase platform;
         Vector3 cameraStartingPos = cameraTransform.position;
-        float randomSpawnDistance = Random.Range(minDistanceToSpawn, maxDistanceToSpawn);
-        float randomSpawnHeight = Random.Range(minHeightToSpawn, maxHeightToSpawn);
+        float randomSpawnDistance = UnityEngine.Random.Range(minDistanceToSpawn, maxDistanceToSpawn);
+        float randomSpawnHeight = UnityEngine.Random.Range(minHeightToSpawn, maxHeightToSpawn);
         while (true) 
         {
-            if (Vector3.Distance(cameraStartingPos, cameraTransform.position) > randomSpawnDistance) 
+            if (Vector3.Distance(cameraStartingPos, cameraTransform.position) > randomSpawnDistance)
             {
-                var randomIndex = Random.Range(0, randomPlatformsPrefabs.Count);
+                var randomIndex = UnityEngine.Random.Range(0, randomPlatformsPrefabs.Count);
                 Vector3 spawnPos = new Vector3(cameraTransform.position.x + spawnDistanceXFromCamera, cameraTransform.position.y + randomSpawnHeight, 0);
-                Instantiate(randomPlatformsPrefabs[randomIndex], spawnPos, Quaternion.identity, transform);
+                CreateNewPlatform(out go, out platform, randomIndex, spawnPos);
                 cameraStartingPos = cameraTransform.position;
-                randomSpawnDistance = Random.Range(minDistanceToSpawn, maxDistanceToSpawn);
-                randomSpawnHeight = Random.Range(minHeightToSpawn, maxHeightToSpawn);
+                randomSpawnDistance = UnityEngine.Random.Range(minDistanceToSpawn, maxDistanceToSpawn);
+                randomSpawnHeight = UnityEngine.Random.Range(minHeightToSpawn, maxHeightToSpawn);
             }
             yield return null;
         }
     }
+
+    private void CreateNewPlatform(out GameObject go, out PlatformBase platform, int randomIndex, Vector3 spawnPos)
+    {
+        go = Instantiate(randomPlatformsPrefabs[randomIndex], spawnPos, Quaternion.identity, transform);
+        platform = go.GetComponent<PlatformBase>();
+        platform.OnDestroy += OnPlatformDestroy;
+        activePlatforms.Add(platform);
+    }
+
+    private void DestroyAllActivePlatforms()
+    {
+        foreach (var platform in activePlatforms)
+        {
+            Destroy(platform.gameObject);
+        }
+        activePlatforms.Clear();
+    }
+
+    void OnPlatformDestroy(PlatformBase platform) 
+    {
+        activePlatforms.Remove(platform);
+    }
+
+    private void ResetPlatforms()
+    {
+        DestroyAllActivePlatforms();
+        StopCoroutine(PlatformSpawnCoroutine);
+        PlatformSpawnCoroutine = PlatformSpawn();
+        StartCoroutine(PlatformSpawnCoroutine);
+    }
+
 }
