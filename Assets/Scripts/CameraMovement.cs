@@ -23,7 +23,7 @@ public class CameraMovement : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y);
 
-        speed += incrementalSpeed;
+        speed += incrementalSpeed * Time.deltaTime;
     }
 }
 
