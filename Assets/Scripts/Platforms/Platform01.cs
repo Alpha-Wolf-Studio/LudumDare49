@@ -24,7 +24,6 @@ public class Platform01 : MonoBehaviour, IPlatform
             }
         }
     }
-
     void IPlatform.DestroyBase() 
     {
         basePlatform.DestroyPlatform();

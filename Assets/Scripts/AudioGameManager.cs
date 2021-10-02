@@ -7,7 +7,8 @@ public class AudioGameManager : MonoBehaviour
         OnDie,
         OnJump,
         OnDoubleJump,
-        OnGround
+        OnGround, 
+        OnCollectPoints
     }
     public Sounds soundsOrder;
     [SerializeField] private AudioSource[] objectsSounds;
@@ -28,6 +29,7 @@ public class AudioGameManager : MonoBehaviour
         player.onJump += OnJump;
         player.onDoubleJump += OnDoubleJump;
         player.onGround += OnGround;
+        player.onCollect += OnCollectPoints;
     }
     private void OnDie()
     {
@@ -44,5 +46,9 @@ public class AudioGameManager : MonoBehaviour
     private void OnGround()
     {
         objectsSounds[(int) Sounds.OnGround].Play();
+    }
+    private void OnCollectPoints()
+    {
+        objectsSounds[(int) Sounds.OnCollectPoints].Play();
     }
 }
