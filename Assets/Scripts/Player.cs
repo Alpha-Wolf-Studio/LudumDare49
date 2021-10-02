@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public Action onJump;
     public Action onDoubleJump;
     public Action onGround;
+    public Action onCollect;
 
     private BoxCollider2D box;
     private Rigidbody2D rb;
@@ -111,6 +112,7 @@ public class Player : MonoBehaviour
 
     public void CollectPoints()
     {
+        onCollect?.Invoke();
         points += pointsPerPackage;
     }
 }
