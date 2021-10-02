@@ -60,7 +60,6 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        float midAirControl = 1.5f;
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
