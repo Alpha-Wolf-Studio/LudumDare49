@@ -262,12 +262,8 @@ MonoBehaviour:
   startingPlatformPrefab: {fileID: 9156018733083763162, guid: 489760ebebc30d14f8cf2dd6883354f9,
     type: 3}
   randomPlatformsPrefabs:
-  - {fileID: 9156018733083763162, guid: 78f72e5324cdbe8418db9f0bdf7decba, type: 3}
-  - {fileID: 6967927152558465770, guid: 0a09fb98e1cdde74dbb4bbd7c90cc3f7, type: 3}
-  - {fileID: 1536334553875260529, guid: acafbc9d221d1e443943c8ebb67ddbae, type: 3}
-  - {fileID: 3524709912267007749, guid: a413c475f0959674aa8bb9cf811f9ddb, type: 3}
-  - {fileID: 5787452193653610153, guid: 5a7f1fd21182ec34c89d4f747f9532c5, type: 3}
-  - {fileID: 8516385718643886108, guid: d2a674bf1ee685047a12700f2d0494e8, type: 3}
+  - {fileID: 7883489479432042257, guid: 6d23bb5c973ff02488ba7db12b195d1c, type: 3}
+  - {fileID: 7883489479432042257, guid: 6d23bb5c973ff02488ba7db12b195d1c, type: 3}
   minDistanceToSpawn: 7.5
   maxDistanceToSpawn: 15
   minHeightToSpawn: -5
@@ -561,8 +557,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf73b131eb9b4ff42a0e3effc223d8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1617489884}
   speed: 5
   incrementalSpeed: 0.001
+  catchUpDistanceX: 8
+  catchUpSpeedMultiplier: 3
 --- !u!1 &1605469559
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +605,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca031ef312ec62449acd871ab38641f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1617489884 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7280985036092238368, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
+    type: 3}
+  m_PrefabInstance: {fileID: 1982195248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1725839631
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,15 +762,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7280985036092238369, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7280985036092238370, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
         type: 3}
       propertyPath: speed
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7280985036092238370, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
         type: 3}
       propertyPath: jumpForce
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7280985036092238370, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
         type: 3}
