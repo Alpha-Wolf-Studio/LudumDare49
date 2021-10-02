@@ -3,9 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class Platform02 : MonoBehaviour
 {
-
     [SerializeField] PlatformBase basePlatform;
-
     [SerializeField] private SpriteRenderer image;
     [SerializeField] private float minRandom = 1.2f;
     [SerializeField] private float MaxRandom = 3.0f;
@@ -30,7 +28,7 @@ public class Platform02 : MonoBehaviour
     {
         if (!firstCollision)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (Funcs.Get().LayerEqualPlayer(other.gameObject.layer))
             {
                 firstCollision = true;
                 StartCoroutine(StartDestroy());

@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 public class Platform04 : MonoBehaviour
 {
-
     [SerializeField] PlatformBase basePlatform;
-
     [SerializeField] private SpriteRenderer image;
     [SerializeField] private SpriteRenderer imageBar;
     private Player player;
@@ -27,7 +25,7 @@ public class Platform04 : MonoBehaviour
     {
         if (!firstCollision)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (Funcs.Get().LayerEqualPlayer(other.gameObject.layer))
             {
                 player = other.gameObject.GetComponent<Player>();
                 firstCollision = true;

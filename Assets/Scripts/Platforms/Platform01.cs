@@ -1,14 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Random = UnityEngine.Random;
-
-
+﻿using UnityEngine;
 public class Platform01 : MonoBehaviour
 {
-
     [SerializeField] PlatformBase basePlatform;
-
     private bool firstCollision;
     Rigidbody2D rb;
 
@@ -16,7 +9,6 @@ public class Platform01 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
     private void Start()
     {
         rb.isKinematic = true;
@@ -25,7 +17,7 @@ public class Platform01 : MonoBehaviour
     {
         if (!firstCollision)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (Funcs.Get().LayerEqualPlayer(other.gameObject.layer))
             {
                 firstCollision = true;
                 rb.isKinematic = false;
