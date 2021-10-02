@@ -1,20 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 public class Platform02 : MonoBehaviour, IPlatform
 {
+    private AllSpritesPlatforms allSprites;
     [SerializeField] PlatformBase basePlatform;
     [SerializeField] private SpriteRenderer image;
     [SerializeField] private float minRandom = 1.2f;
     [SerializeField] private float MaxRandom = 3.0f;
     [SerializeField] private float maxTimeAlive;
     private float onTimeAlive;
-    private Color colorStart;
-    private Color colorEnd = Color.black;
     private bool firstCollision;
+    public SpriteRenderer[] sprites;
+    public SpriteRenderer[] glitches;
+    private float maxGlitchChanges;
+    [SerializeField] private float maxChangeTime = 0.3f;
+    private float onChangeTime;
 
     private void Start()
     {
+        maxGlitchChanges = Random.Range(0, allSprites.spritesGlitchs.Length);
+
         if (!image)
             Debug.LogWarning("Imagen no seteada en el Prefab Platform02.", gameObject);
 
@@ -22,7 +29,11 @@ public class Platform02 : MonoBehaviour, IPlatform
         {
             maxTimeAlive = Random.Range(minRandom, MaxRandom);
         }
-        colorStart = image.color;
+
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            sprites[i].sprite = allSprites.spritesIcons[Random.Range(0, allSprites.spritesIcons.Length)];
+        }
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -40,7 +51,14 @@ public class Platform02 : MonoBehaviour, IPlatform
         while (onTimeAlive < maxTimeAlive)
         {
             onTimeAlive += Time.deltaTime;
-            image.color = Color.Lerp(colorStart, colorEnd, onTimeAlive / maxTimeAlive);
+            onChangeTime += Time.deltaTime;
+
+            if (onChangeTime > maxChangeTime)
+            {
+                
+                onChangeTime = 0;
+            }
+            
             yield return null;
         }
         basePlatform.DestroyPlatform();

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     IEnumerator PlatformSpawnCoroutine =  null;
     List<PlatformBase> activePlatforms = new List<PlatformBase>();
 
+
     void Start()
     {
         player.onDie += PlayerDie;
