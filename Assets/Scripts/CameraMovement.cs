@@ -12,7 +12,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (!playerTransform)
         {
-            playerTransform = GetComponent<Player>().transform;
+            playerTransform = FindObjectOfType<Player>().transform;
             Debug.LogWarning("playerTransform no está asignado", gameObject);
         }
     }
