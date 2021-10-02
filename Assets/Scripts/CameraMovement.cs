@@ -1,29 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
-
     [SerializeField] private Transform playerTransform;
     [Space(10)]
     [SerializeField] private float speed;
     [SerializeField] private float incrementalSpeed;
     [SerializeField] private float catchUpDistanceX;
-    [SerializeField] private float catchUpSpeedMultiplier; 
+    [SerializeField] private float catchUpSpeedMultiplier;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
+        if (!playerTransform)
+        {
+            playerTransform = GetComponent<Player>().transform;
+            Debug.LogWarning("playerTransform no está asignado", gameObject);
+        }
     }
-
-    // Update is called once per frame
     void Update()
     {
         Movement();
     }
-
     void Movement()
     {
         float playerX = playerTransform.position.x;
@@ -38,5 +34,3 @@ public class CameraMovement : MonoBehaviour
         speed += incrementalSpeed * Time.deltaTime;
     }
 }
-
-
