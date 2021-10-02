@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     private BoxCollider2D box;
     private Rigidbody2D rb;
+    private float horizontal;
+    private float vertical;
     [SerializeField] private int maxJumps = 2;
     [SerializeField] private int points = 0;
     [SerializeField] private int pointsPerPackage = 20;
@@ -34,6 +36,12 @@ public class Player : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        Debug.Log(horizontal);
+        rb.velocity = new Vector2(speed * horizontal, jumpForce * vertical);
+    }
+
     void Update()
     {
         Movement();
@@ -49,11 +57,13 @@ public class Player : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.W)) && jumps < maxJumps-1)
         {
+            vertical = 1;
             jumps++;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            
         }
         else
         {
+            vertical -= 0.01f;
             if (GroundCheck())
             {
                 isGrounded = true;
@@ -79,15 +89,15 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
+            horizontal = -1;
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            rb.velocity = new Vector2(+speed, rb.velocity.y);
+            horizontal = 1;
         }
         else
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            horizontal = 0;
         }
     }
 
