@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isGrounded;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] LayerMask platformLayers;
+    [SerializeField] Vector2 initialPosition;
+    [SerializeField] float deathY = -20.0f;
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement();
+        CheckDeath();
     }
 
     private void Movement()
@@ -71,6 +74,19 @@ public class Player : MonoBehaviour
         else
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+    }
+
+    private void CheckDeath()
+    {
+        if (box.bounds.center.y < deathY)
+        {
+            isAlive = false;
+        }
+        if (!isAlive)
+        {
+            isAlive = true;
+            rb.position = initialPosition;
         }
     }
 }
