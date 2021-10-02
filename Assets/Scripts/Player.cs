@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private BoxCollider2D box;
     private Rigidbody2D rb;
     [SerializeField] private int maxJumps = 2;
+    [SerializeField] private int points = 0;
+    [SerializeField] private int pointsPerPackage = 20;
     [SerializeField] private bool isAlive = true;
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private int jumps = 0;
@@ -105,5 +107,10 @@ public class Player : MonoBehaviour
         onDie?.Invoke();
         isAlive = true;
         rb.position = initialPosition;
+    }
+
+    public void CollectPoints()
+    {
+        points += pointsPerPackage;
     }
 }
