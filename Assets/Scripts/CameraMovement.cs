@@ -25,7 +25,7 @@ public class CameraMovement : MonoBehaviour
         }
         gameManager.OnResetLevel += ResetPosition;
     }
-    private void Update()
+    private void LateUpdate()
     {
         Movement();
     } 
@@ -35,9 +35,9 @@ public class CameraMovement : MonoBehaviour
         Transform transf = transform;
         Vector3 pos = transf.position;
 
-        if (Mathf.Abs(playerX - transform.position.x) > catchUpDistanceX)
+        if (playerX - transform.position.x > catchUpDistanceX)
         {
-            pos = new Vector3(pos.x + speed * catchUpSpeedMultiplier * Time.deltaTime, pos.y, pos.z);
+            pos = new Vector3(pos.x + player.GetSpeed() * catchUpSpeedMultiplier * Time.deltaTime, pos.y, pos.z);
             transf.position = pos;
         }
         else 

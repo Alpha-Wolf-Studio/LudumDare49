@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] Vector2 initialPosition;
     [SerializeField] float deathY = -10.0f;
     bool isAlive = true;
+    public float GetSpeed() => speed;
 
     [Header("Animation")]
     [SerializeField] string runAnimationBool = "run";
