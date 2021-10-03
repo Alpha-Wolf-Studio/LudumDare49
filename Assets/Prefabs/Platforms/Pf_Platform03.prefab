@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fcd8aac371d034baefefc785c31d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeSprite: 1
+  typeSprite: 3
 --- !u!1 &3089114664694242832
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fcd8aac371d034baefefc785c31d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeSprite: 1
+  typeSprite: 3
 --- !u!1 &3520004111342387645
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fcd8aac371d034baefefc785c31d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeSprite: 1
+  typeSprite: 3
 --- !u!1 &3912037596042206020
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,8 +593,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3912037596042206020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.33, y: 3.78, z: 0}
-  m_LocalScale: {x: 59.728466, y: 3.0027, z: 1}
+  m_LocalPosition: {x: -0.17, y: 4.02, z: 0}
+  m_LocalScale: {x: 75, y: 4, z: 1}
   m_Children:
   - {fileID: 8059660611527172860}
   - {fileID: 5239159594353742559}
@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fcd8aac371d034baefefc785c31d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeSprite: 1
+  typeSprite: 3
 --- !u!1 &4083018857426861638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fcd8aac371d034baefefc785c31d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeSprite: 1
+  typeSprite: 3
 --- !u!1 &4083018857543557346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,7 +2434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fcd8aac371d034baefefc785c31d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeSprite: 1
+  typeSprite: 3
 --- !u!1 &5297729260558996780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,7 +2530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fcd8aac371d034baefefc785c31d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeSprite: 1
+  typeSprite: 3
 --- !u!1 &5535586722588739967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,7 +2705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fcd8aac371d034baefefc785c31d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeSprite: 1
+  typeSprite: 3
 --- !u!1 &6182892452553996207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,6 +2753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05e69e23fb3111469231d662f2cd441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToDestroyPlatform: 10
   spritesToColor:
   - {fileID: 4083018858913383892}
   - {fileID: 4083018857543557348}
