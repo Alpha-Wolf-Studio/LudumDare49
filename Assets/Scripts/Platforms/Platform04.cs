@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Platform04 : MonoBehaviour, IPlatform
+public class Platform04 : Platform
 {
     enum Direction
     {
@@ -10,14 +10,13 @@ public class Platform04 : MonoBehaviour, IPlatform
     private Direction dir = Direction.None;
     private Direction lastDir = Direction.None;
 
-    [SerializeField] PlatformBase basePlatform;
+
     [SerializeField] private SpriteRenderer image;
     [SerializeField] private SpriteRenderer imageBar;
     private Rigidbody2D rb;
 
     [SerializeField] private float strengthBarReduction = 20f;
     [SerializeField] private float distance = 0.8f;
-    private bool firstCollision;
     private float actualx;
     private float playerx;
     private float barx;
@@ -93,6 +92,8 @@ public class Platform04 : MonoBehaviour, IPlatform
                 if (Mathf.Abs(actualx) > distance)
                 {
                     rb.bodyType = RigidbodyType2D.Dynamic;
+                    other.gameObject.GetComponent<Player>().CollectPoints(score);
+                    firstCollision = false;
                     basePlatform.DestroyPlatform();
                 }
                 else
@@ -108,9 +109,5 @@ public class Platform04 : MonoBehaviour, IPlatform
     {
         if (Funcs.Get().LayerEqualPlayer(other.gameObject.layer))
             dir = Direction.None;
-    }
-    void IPlatform.DestroyBase()
-    {
-        basePlatform.DestroyPlatform();
     }
 }

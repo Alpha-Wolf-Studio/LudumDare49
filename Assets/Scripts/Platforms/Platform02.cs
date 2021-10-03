@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
-public class Platform02 : MonoBehaviour, IPlatform
+public class Platform02 : Platform
 {
     private AllSpritesPlatforms allSprites;
-    [SerializeField] PlatformBase basePlatform;
     private float minRandomAlive = 1.2f;
     private float MaxRandomAlive = 3.0f;
     private float maxTimeAlive;
     private float onTimeAlive;
-    private bool firstCollision;
     public ComponentHasGlitch[] glitches;
     private int currenGlitch = -1;
 
@@ -37,6 +35,7 @@ public class Platform02 : MonoBehaviour, IPlatform
                 glitches[0].gameObject.SetActive(true);
                 NextGlitch();
                 StartCoroutine(StartDestroy());
+                other.gameObject.GetComponent<Player>().CollectPoints(score);
             }
         }
     }
@@ -60,9 +59,5 @@ public class Platform02 : MonoBehaviour, IPlatform
             float timePerGlitch = maxTimeAlive / glitches.Length;
             glitches[currenGlitch].SetGlitch(timePerGlitch);
         }
-    }
-    void IPlatform.DestroyBase()
-    {
-        basePlatform.DestroyPlatform();
     }
 }

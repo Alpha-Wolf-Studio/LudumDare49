@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class Platform03 : MonoBehaviour, IPlatform
+public class Platform03 : Platform
 {
     [Header("Pillars references")] 
-    [SerializeField] private PlatformBase basePlatform;
     [SerializeField] private GameObject leftSidePlatform;
     [SerializeField] private GameObject rightSidePlatform;
     [SerializeField] private GameObject lowPlatform;
@@ -29,22 +28,20 @@ public class Platform03 : MonoBehaviour, IPlatform
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (Funcs.Get().LayerEqualPlayer(other.gameObject.layer))
+        if (Funcs.Get().LayerEqualPlayer(other.gameObject.layer) && !firstCollision)
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
             leftRB.bodyType = RigidbodyType2D.Dynamic;
             rightRB.bodyType = RigidbodyType2D.Dynamic;
             StartCoroutine(DestroyLowPlatform());
+            other.gameObject.GetComponent<Player>().CollectPoints(score);
+            firstCollision = true;
         }
     }
     IEnumerator DestroyLowPlatform() 
     {
         yield return new WaitForSeconds(timeToRemovePlatform);
         lowPlatform.SetActive(false);
-        basePlatform.DestroyPlatform();
-    }
-    void IPlatform.DestroyBase()
-    {
         basePlatform.DestroyPlatform();
     }
 }

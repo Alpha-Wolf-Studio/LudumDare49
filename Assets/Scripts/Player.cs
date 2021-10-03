@@ -69,17 +69,13 @@ public class Player : MonoBehaviour
             jumps++;
             rb.velocity = new Vector2(rb.velocity.x, 0.0f);
             rb.AddForce((Vector2.up * jumpForce), ForceMode2D.Impulse);
+            if (jumps == 1) onJump?.Invoke();
+            else onDoubleJump?.Invoke();
         }
         else
         {
-            if (GroundCheck())
-            {
-                isGrounded = true;
-            }
-            else
-            {
-                isGrounded = false;
-            }
+            if (!isGrounded && GroundCheck()) onGround?.Invoke();
+            isGrounded = GroundCheck();
         }
         anim.SetBool(isGroundedAnimationBool, isGrounded);
         HandleMovement();

@@ -13,8 +13,8 @@ public class Firewall : MonoBehaviour
             return;
         }
 
-        IPlatform platform = collision.GetComponent<IPlatform>();
-        if (platform != null)
+        Platform platform = collision.GetComponent<Platform>();
+        if (platform)
         {
             platform.DestroyBase();
         }

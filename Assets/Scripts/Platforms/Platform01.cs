@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-public class Platform01 : MonoBehaviour, IPlatform
+public class Platform01 : Platform
 {
     private AllSpritesPlatforms allSprites;
-    [SerializeField] private PlatformBase basePlatform;
     [SerializeField] private GameObject searchBarGO;
-    private bool firstCollision;
     private Rigidbody2D rb;
     public SpriteRenderer[] sprites;
     private void Awake()
@@ -26,11 +24,8 @@ public class Platform01 : MonoBehaviour, IPlatform
                 rb.isKinematic = false;
                 if(searchBarGO) searchBarGO.SetActive(true);
                 basePlatform.DestroyPlatform();
+                other.gameObject.GetComponent<Player>().CollectPoints(score);
             }
         }
-    }
-    void IPlatform.DestroyBase() 
-    {
-        basePlatform.DestroyPlatform();
     }
 }
