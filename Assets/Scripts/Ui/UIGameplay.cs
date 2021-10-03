@@ -9,6 +9,7 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] GameManager gameManager;
     [Header("Background Configuration")]
     [SerializeField] RawImage backgroundImage = null;
+    [SerializeField] float backgroundAlphaColorMultiplier = 0.5f;
     [SerializeField] Transform cameraTransform = null;
     [SerializeField] float multiplier = 0.02f;
     float aux = 0;
@@ -28,6 +29,6 @@ public class UIGameplay : MonoBehaviour
         }
         Rect newRect = new Rect((cameraTransform.position.x - aux) * multiplier, startingRect.y, startingRect.width, startingRect.height);
         backgroundImage.uvRect = newRect;
-        backgroundImage.color = gameManager.currentThemeColor;
+        backgroundImage.color = new Color(gameManager.currentThemeColor.r, gameManager.currentThemeColor.g, gameManager.currentThemeColor.b, gameManager.currentThemeColor.a * backgroundAlphaColorMultiplier);
     }
 }
