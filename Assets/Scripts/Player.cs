@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
 
     public void RevivePlayer() 
     {
+        points = 0;
         isAlive = true;
         transform.position = initialPosition;
         rb.velocity = Vector2.zero;
