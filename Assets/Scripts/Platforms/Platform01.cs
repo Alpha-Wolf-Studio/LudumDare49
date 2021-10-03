@@ -3,6 +3,7 @@ public class Platform01 : MonoBehaviour, IPlatform
 {
     private AllSpritesPlatforms allSprites;
     [SerializeField] private PlatformBase basePlatform;
+    [SerializeField] private GameObject searchBarGO;
     private bool firstCollision;
     private Rigidbody2D rb;
     public SpriteRenderer[] sprites;
@@ -23,6 +24,7 @@ public class Platform01 : MonoBehaviour, IPlatform
             {
                 firstCollision = true;
                 rb.isKinematic = false;
+                if(searchBarGO) searchBarGO.SetActive(true);
                 basePlatform.DestroyPlatform();
             }
         }
