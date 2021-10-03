@@ -47,7 +47,7 @@ public class AudioGameManager : MonoBehaviour
     {
         objectsSounds[(int) Sounds.OnGround].Play();
     }
-    private void OnCollectPoints()
+    private void OnCollectPoints(int points)
     {
         objectsSounds[(int) Sounds.OnCollectPoints].Play();
     }

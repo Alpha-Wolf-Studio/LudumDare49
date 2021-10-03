@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public Action onJump;
     public Action onDoubleJump;
     public Action onGround;
-    public Action onCollect;
+    public Action<int> onCollect;
 
     private BoxCollider2D box;
     private Rigidbody2D rb;
@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     private float vertical;
     [SerializeField] private int maxJumps = 2;
     [SerializeField] private int points = 0;
-    [SerializeField] private int pointsPerPackage = 20;
     [SerializeField] private bool isAlive = true;
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private int jumps = 0;
@@ -135,9 +134,9 @@ public class Player : MonoBehaviour
         anim.SetTrigger(dieAnimationTrigger);
     }
 
-    public void CollectPoints()
+    public void CollectPoints(int points)
     {
-        onCollect?.Invoke();
-        points += pointsPerPackage;
+        this.points += points;
+        onCollect?.Invoke(this.points);
     }
 }

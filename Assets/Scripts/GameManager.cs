@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
+    public Action OnResetLevel;
     public Player player;
-    [Header("Platforms configurations")]
+
+    [Header("Platforms Configurations")]
     [SerializeField] Transform cameraTransform = null;
     [SerializeField] GameObject startingPlatformPrefab = null;
     [SerializeField] List<GameObject> randomPlatformsPrefabs = null;
@@ -15,8 +17,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] float maxHeightToSpawn = 5f;
     [SerializeField] float spawnDistanceXFromCamera = 50f;
 
-    public Action OnResetLevel;
+    [Header("Theme Configurations")]
+    [SerializeField] List<ColorTheme> posibleThemeColors = null;
+    public Color currentThemeColor { get; set; }
+
     IEnumerator PlatformSpawnCoroutine =  null;
+    IEnumerator ColorThemeCoroutine = null;
     List<PlatformBase> activePlatforms = new List<PlatformBase>();
 
 
@@ -26,16 +32,41 @@ public class GameManager : MonoBehaviour
         PlatformSpawnCoroutine = PlatformSpawn();
         Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity, transform);
         StartCoroutine(PlatformSpawnCoroutine);
+        ColorThemeCoroutine = UpdateColorTheme();
+        StartCoroutine(ColorThemeCoroutine);
     }
     void Update()
     {
-        
+
     }
     void PlayerDie()
     {
-        ResetPlatforms();
+        ResetGame();
     }
 
+    IEnumerator UpdateColorTheme() 
+    {
+        int currentColorIndex = 0;
+        int nextColorIndex = 1;
+        float t = 0;
+        float cameraStartingPosX = cameraTransform.position.x;
+        float cameraFinalPosX = cameraStartingPosX + posibleThemeColors[currentColorIndex].distanceToChange;
+        while (true) 
+        {
+            while (cameraTransform.position.x < cameraFinalPosX)
+            {
+                t = (cameraTransform.position.x - cameraStartingPosX) / (cameraFinalPosX - cameraStartingPosX);
+                Debug.Log("T:" + t);
+                currentThemeColor = Color.Lerp(posibleThemeColors[currentColorIndex].color, posibleThemeColors[nextColorIndex].color, t);
+                yield return null;
+            }
+            currentColorIndex = nextColorIndex;
+            nextColorIndex = nextColorIndex + 1 == posibleThemeColors.Count ? 0 : currentColorIndex + 1;
+            cameraStartingPosX = cameraTransform.position.x;
+            cameraFinalPosX = cameraStartingPosX + posibleThemeColors[currentColorIndex].distanceToChange;
+            t = 0;
+        }
+    }
     IEnumerator PlatformSpawn() 
     {
         GameObject go;
@@ -80,12 +111,16 @@ public class GameManager : MonoBehaviour
         activePlatforms.Remove(platform);
     }
 
-    private void ResetPlatforms()
+    private void ResetGame()
     {
         DestroyAllActivePlatforms();
         StopCoroutine(PlatformSpawnCoroutine);
         PlatformSpawnCoroutine = PlatformSpawn();
         StartCoroutine(PlatformSpawnCoroutine);
+
+        StopCoroutine(ColorThemeCoroutine);
+        ColorThemeCoroutine = UpdateColorTheme();
+        StartCoroutine(ColorThemeCoroutine);
     }
 
 }
