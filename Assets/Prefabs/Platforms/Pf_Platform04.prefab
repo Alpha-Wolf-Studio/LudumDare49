@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b76fb0a1a3f9b40bab54182496c53d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePlatform: {fileID: 0}
+  basePlatform: {fileID: 1318599321}
   image: {fileID: 8838769282325947512}
   imageBar: {fileID: 4336036160574105755}
   strengthBarReduction: 2
@@ -529,6 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05e69e23fb3111469231d662f2cd441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spritesToColor:
+  - {fileID: 8838769282325947512}
 --- !u!1 &9093258114235476784
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,22 +5,19 @@ public class Platform02 : MonoBehaviour, IPlatform
     private AllSpritesPlatforms allSprites;
     [SerializeField] PlatformBase basePlatform;
     private float minRandomAlive = 1.2f;
-    private float MaxRandomAlive = 4.0f;
-    [SerializeField] private float maxTimeAlive;
+    private float MaxRandomAlive = 3.0f;
+    private float maxTimeAlive;
     private float onTimeAlive;
     private bool firstCollision;
-    public GameObject[] glitches;
-
+    public ComponentHasGlitch[] glitches;
+    private int currenGlitch = -1;
     private void Awake()
     {
         allSprites = AllSpritesPlatforms.Get();
     }
     private void Start()
     {
-        if (maxTimeAlive == 0)
-        {
-            maxTimeAlive = Random.Range(minRandomAlive, MaxRandomAlive);
-        }
+        maxTimeAlive = Random.Range(minRandomAlive, MaxRandomAlive);
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -31,8 +28,11 @@ public class Platform02 : MonoBehaviour, IPlatform
                 firstCollision = true;
                 for (int i = 0; i < glitches.Length; i++)
                 {
-                    glitches[i].SetActive(true);
+                    glitches[i].onDoneGlitch += NextGlitch;
                 }
+
+                glitches[0].gameObject.SetActive(true);
+                NextGlitch();
                 StartCoroutine(StartDestroy());
             }
         }
@@ -45,6 +45,14 @@ public class Platform02 : MonoBehaviour, IPlatform
             yield return null;
         }
         basePlatform.DestroyPlatform();
+    }
+    void NextGlitch()
+    {
+        Debug.Log("Next Glitch.");
+        currenGlitch++;
+        glitches[currenGlitch].gameObject.SetActive(true);
+        float timePerGlitch = maxTimeAlive / glitches.Length;
+        glitches[currenGlitch].SetGlitch(timePerGlitch);
     }
     void IPlatform.DestroyBase()
     {
