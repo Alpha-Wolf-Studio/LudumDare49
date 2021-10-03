@@ -11,8 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform cameraTransform = null;
     [SerializeField] GameObject startingPlatformPrefab = null;
     [SerializeField] List<GameObject> randomPlatformsPrefabs = null;
-    [SerializeField] float minDistanceToSpawn = 20f;
-    [SerializeField] float maxDistanceToSpawn = 30f;
+    [SerializeField] float distanceToSpawn = 15f;
     [SerializeField] float minHeightToSpawn = -5f;
     [SerializeField] float maxHeightToSpawn = 5f;
     [SerializeField] float spawnDistanceXFromCamera = 50f;
@@ -77,7 +76,7 @@ public class GameManager : MonoBehaviour
         GameObject go;
         PlatformBase platform;
         Vector3 cameraStartingPos = cameraTransform.position;
-        float randomSpawnDistance = UnityEngine.Random.Range(minDistanceToSpawn, maxDistanceToSpawn);
+        float randomSpawnDistance = distanceToSpawn;
         float randomSpawnHeight = UnityEngine.Random.Range(minHeightToSpawn, maxHeightToSpawn);
         while (true)
         {
@@ -87,7 +86,7 @@ public class GameManager : MonoBehaviour
                 Vector3 spawnPos = new Vector3(cameraTransform.position.x + spawnDistanceXFromCamera, cameraTransform.position.y + randomSpawnHeight, 0);
                 CreateNewPlatform(out go, out platform, randomIndex, spawnPos);
                 cameraStartingPos = cameraTransform.position;
-                randomSpawnDistance = UnityEngine.Random.Range(minDistanceToSpawn, maxDistanceToSpawn);
+                randomSpawnDistance = distanceToSpawn;
                 randomSpawnHeight = UnityEngine.Random.Range(minHeightToSpawn, maxHeightToSpawn);
             }
 
@@ -151,6 +150,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
 
+        OnResetLevel?.Invoke();
+
         DestroyAllActivePlatforms();
         StopCoroutine(PlatformSpawnCoroutine);
         PlatformSpawnCoroutine = PlatformSpawn();
@@ -161,8 +162,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ColorThemeCoroutine);
 
         DestroyAllActiveFolders();
-
-        OnResetLevel?.Invoke();
 
         player.RevivePlayer();
     }
