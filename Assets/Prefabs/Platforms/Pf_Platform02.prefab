@@ -105,14 +105,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7889988507000943500}
   - component: {fileID: 1562249871}
-  - component: {fileID: 3734477638083642152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pf_Platform02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7889988507000943500
 Transform:
   m_ObjectHideFlags: 0
@@ -121,7 +120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135172631134872100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.25, y: 1.42, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7636187567809012295}
@@ -135,18 +134,6 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1562249871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2135172631134872100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d05e69e23fb3111469231d662f2cd441, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3734477638083642152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1143,7 +1130,7 @@ GameObject:
   - component: {fileID: 8628768609233587952}
   - component: {fileID: 1923197294544193588}
   - component: {fileID: 9079838527957534750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Balance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1246,7 +1233,7 @@ MonoBehaviour:
   image: {fileID: 8628768609233587952}
   minRandom: 1.2
   MaxRandom: 3
-  maxTimeAlive: 0
+  maxTimeAlive: 2
   sprites:
   - {fileID: 3483696779087085901}
   - {fileID: 6190536608669040589}

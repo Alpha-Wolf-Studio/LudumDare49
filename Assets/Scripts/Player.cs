@@ -25,20 +25,29 @@ public class Player : MonoBehaviour
     [SerializeField] Vector2 initialPosition;
     [SerializeField] float deathY = -20.0f;
 
+    [Header("Animation")]
+    [SerializeField] string runAnimationBool = "run";
+    [SerializeField] string idleAnimationBool = "idle";
+    [SerializeField] string isGroundedAnimationBool = "isGrounded";
+    [SerializeField] string dieAnimationTrigger = "die";
+    SpriteRenderer spriteRenderer;
+    Animator anim;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
-
+        initialPosition = transform.position;
     }
 
     private void FixedUpdate()
     {
-        Debug.Log(horizontal);
         rb.velocity = new Vector2(speed * horizontal, jumpForce * vertical);
     }
 
@@ -73,7 +82,7 @@ public class Player : MonoBehaviour
                 isGrounded = false;
             }
         }
-
+        anim.SetBool(isGroundedAnimationBool, isGrounded);
         HandleMovement();
     }
 
@@ -88,14 +97,22 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             horizontal = -1;
+            anim.SetBool(runAnimationBool, true);
+            anim.SetBool(idleAnimationBool, false);
+            spriteRenderer.flipX = true;
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             horizontal = 1;
+            anim.SetBool(runAnimationBool, true);
+            anim.SetBool(idleAnimationBool, false);
+            spriteRenderer.flipX = false;
         }
         else
         {
             horizontal = 0;
+            anim.SetBool(runAnimationBool, false);
+            anim.SetBool(idleAnimationBool, true);
         }
     }
 
@@ -115,7 +132,8 @@ public class Player : MonoBehaviour
     {
         onDie?.Invoke();
         isAlive = true;
-        rb.position = initialPosition;
+        transform.position = initialPosition;
+        anim.SetTrigger(dieAnimationTrigger);
     }
 
     public void CollectPoints()
