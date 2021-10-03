@@ -1,50 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 public class InGamePause : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    public static bool isPause;
+    public CanvasGroup[] ui;
 
-    public GameObject pauseMenuUI;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            Pause();
         }
     }
-
-    public void Resume()
+    public void Pause()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-    }   
+        Time.timeScale = isPause ? 0 : 1;
+        isPause = !isPause;
 
-    void Pause()
-    {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+        for (int i = 0; i < ui.Length; i++)
+        {
+            ui[i].alpha = isPause ? 1 : 0;
+            ui[i].blocksRaycasts = isPause;
+            ui[i].interactable = isPause;
+        }
     }
-
-
-
-
 }
