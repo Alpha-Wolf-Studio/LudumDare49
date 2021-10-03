@@ -47,6 +47,13 @@ public class GameManager : MonoBehaviour
     }
     void PlayerDie()
     {
+        StartCoroutine(TestCoroutine());
+    }
+
+    IEnumerator TestCoroutine() 
+    {
+        Time.timeScale = 0.0f;
+        yield return new WaitForSecondsRealtime(5.0f);
         ResetGame();
     }
 
@@ -135,6 +142,8 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame()
     {
+        Time.timeScale = 1.0f;
+
         DestroyAllActivePlatforms();
         StopCoroutine(PlatformSpawnCoroutine);
         PlatformSpawnCoroutine = PlatformSpawn();
@@ -143,6 +152,10 @@ public class GameManager : MonoBehaviour
         StopCoroutine(ColorThemeCoroutine);
         ColorThemeCoroutine = UpdateColorTheme();
         StartCoroutine(ColorThemeCoroutine);
+
+        OnResetLevel?.Invoke();
+
+        player.RevivePlayer();
     }
 
 }

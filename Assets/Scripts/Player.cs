@@ -14,20 +14,21 @@ public class Player : MonoBehaviour
     private float horizontal;
     [SerializeField] private int maxJumps = 2;
     [SerializeField] private int points = 0;
-    [SerializeField] private bool isAlive = true;
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private int jumps = 0;
     [SerializeField] private bool isGrounded;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] LayerMask platformLayers;
     [SerializeField] Vector2 initialPosition;
-    [SerializeField] float deathY = -20.0f;
+    [SerializeField] float deathY = -10.0f;
+    bool isAlive = true;
 
     [Header("Animation")]
     [SerializeField] string runAnimationBool = "run";
     [SerializeField] string idleAnimationBool = "idle";
     [SerializeField] string isGroundedAnimationBool = "isGrounded";
     [SerializeField] string dieAnimationTrigger = "die";
+    [SerializeField] string reviveAnimationTrigger = "revive";
     SpriteRenderer spriteRenderer;
     Animator anim;
 
@@ -115,22 +116,27 @@ public class Player : MonoBehaviour
 
     private void CheckDeath()
     {
-        if (box.bounds.center.y < deathY)
+        if (box.bounds.center.y < deathY && isAlive)
         {
-            isAlive = false;
-        }
-        if (!isAlive)
-        {
-            Die();
+            Die();    
         }
     }
 
     public void Die()
     {
+        isAlive = false;
         onDie?.Invoke();
+        anim.SetTrigger(dieAnimationTrigger);
+        anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+    }
+
+    public void RevivePlayer() 
+    {
         isAlive = true;
         transform.position = initialPosition;
-        anim.SetTrigger(dieAnimationTrigger);
+        rb.velocity = Vector2.zero;
+        anim.SetTrigger(reviveAnimationTrigger);
+        anim.updateMode = AnimatorUpdateMode.Normal;
     }
 
     public void CollectPoints(int points)

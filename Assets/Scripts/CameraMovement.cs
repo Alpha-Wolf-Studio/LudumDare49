@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private Player player;
     [Space(10)]
     [SerializeField] private float speed;
@@ -22,7 +23,7 @@ public class CameraMovement : MonoBehaviour
             player = FindObjectOfType<Player>();
             Debug.LogWarning("playerTransform no está asignado", gameObject);
         }
-        player.onDie += ResetPosition;
+        gameManager.OnResetLevel += ResetPosition;
     }
     private void Update()
     {
