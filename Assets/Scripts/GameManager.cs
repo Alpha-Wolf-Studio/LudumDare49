@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
             while (cameraTransform.position.x < cameraFinalPosX)
             {
                 t = (cameraTransform.position.x - cameraStartingPosX) / (cameraFinalPosX - cameraStartingPosX);
-                Debug.Log("T:" + t);
                 currentThemeColor = Color.Lerp(posibleThemeColors[currentColorIndex].color, posibleThemeColors[nextColorIndex].color, t);
                 yield return null;
             }
