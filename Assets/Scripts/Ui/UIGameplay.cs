@@ -12,13 +12,21 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] Transform cameraTransform = null;
     [SerializeField] float multiplier = 0.02f;
     float aux = 0;
+
+    Rect startingRect;
+
+    private void Awake()
+    {
+        startingRect = backgroundImage.uvRect;
+    }
+
     private void Update()
     {
         if(cameraTransform.position.x > aux + 1300) 
         {
             aux += 1300;
         }
-        Rect newRect = new Rect((cameraTransform.position.x - aux) * multiplier, 0, 1, 1);
+        Rect newRect = new Rect((cameraTransform.position.x - aux) * multiplier, startingRect.y, startingRect.width, startingRect.height);
         backgroundImage.uvRect = newRect;
         backgroundImage.color = gameManager.currentThemeColor;
     }

@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
     IEnumerator PlatformSpawnCoroutine =  null;
     IEnumerator ColorThemeCoroutine = null;
     List<PlatformBase> activePlatforms = new List<PlatformBase>();
-    
+    List<InformationPackage> activePackages = new List<InformationPackage>();
+
     void Start()
     {
         player.onDie += PlayerDie;
@@ -115,8 +116,25 @@ public class GameManager : MonoBehaviour
             newPosY = maxYLimit;
         }
         Vector3 folderPos = new Vector3(basePosition.x, newPosY, basePosition.z);
-        Instantiate(folderPrefab, folderPos, Quaternion.identity, transform);
+        GameObject go = Instantiate(folderPrefab, folderPos, Quaternion.identity, transform);
+        var folder = go.GetComponent<InformationPackage>();
+        activePackages.Add(folder);
+        folder.OnDestroy += OnFolderDestroy;
     }
+    private void DestroyAllActiveFolders()
+    {
+        foreach (var folder in activePackages)
+        {
+            Destroy(folder.gameObject);
+        }
+        activePackages.Clear();
+    }
+
+    void OnFolderDestroy(InformationPackage folder) 
+    {
+        activePackages.Remove(folder);
+    }
+
     private void DestroyAllActivePlatforms()
     {
         foreach (var platform in activePlatforms)
@@ -141,6 +159,8 @@ public class GameManager : MonoBehaviour
         StopCoroutine(ColorThemeCoroutine);
         ColorThemeCoroutine = UpdateColorTheme();
         StartCoroutine(ColorThemeCoroutine);
+
+        DestroyAllActiveFolders();
 
         OnResetLevel?.Invoke();
 

@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
+using System;
 [RequireComponent(typeof(BoxCollider2D))]
 public class InformationPackage : MonoBehaviour
 {
+
+    public Action<InformationPackage> OnDestroy;
+
     private AllSpritesPlatforms allSprites;
     [SerializeField] private int minPoints = 20;
     [SerializeField] private int maxPoints = 100;
@@ -11,9 +15,9 @@ public class InformationPackage : MonoBehaviour
     private void Awake()
     {
         box = GetComponent<BoxCollider2D>();
-        currentPoints = Random.Range(minPoints, maxPoints);
+        currentPoints = UnityEngine.Random.Range(minPoints, maxPoints);
         allSprites = AllSpritesPlatforms.Get();
-        int randomPosition = Random.Range(0, allSprites.spritesFolders.Length);
+        int randomPosition = UnityEngine.Random.Range(0, allSprites.spritesFolders.Length);
         GetComponent<SpriteRenderer>().sprite = allSprites.spritesFolders[randomPosition];
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,6 +26,7 @@ public class InformationPackage : MonoBehaviour
         if (player)
         {
             player.CollectPoints(currentPoints);
+            OnDestroy?.Invoke(this);
             Destroy(gameObject);
             return;
         }
