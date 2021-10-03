@@ -11,8 +11,11 @@ public class Platform02 : MonoBehaviour, IPlatform
     private bool firstCollision;
     public ComponentHasGlitch[] glitches;
     private int currenGlitch = -1;
+
+    Rigidbody2D rb;
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         allSprites = AllSpritesPlatforms.Get();
     }
     private void Start()
@@ -44,15 +47,19 @@ public class Platform02 : MonoBehaviour, IPlatform
             onTimeAlive += Time.deltaTime;
             yield return null;
         }
-        basePlatform.DestroyPlatform();
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        //basePlatform.DestroyPlatform();
     }
     void NextGlitch()
     {
         //Debug.Log("Next Glitch.");
         currenGlitch++;
-        glitches[currenGlitch].gameObject.SetActive(true);
-        float timePerGlitch = maxTimeAlive / glitches.Length;
-        glitches[currenGlitch].SetGlitch(timePerGlitch);
+        if(currenGlitch < glitches.Length) 
+        {
+            glitches[currenGlitch].gameObject.SetActive(true);
+            float timePerGlitch = maxTimeAlive / glitches.Length;
+            glitches[currenGlitch].SetGlitch(timePerGlitch);
+        }
     }
     void IPlatform.DestroyBase()
     {
