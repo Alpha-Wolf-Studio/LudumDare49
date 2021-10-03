@@ -13,6 +13,7 @@ public class ComponentHasGlitch : MonoBehaviour
 
     private void Awake()
     {
+        allSprites = FindObjectOfType<AllSpritesPlatforms>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 

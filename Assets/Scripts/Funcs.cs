@@ -5,7 +5,7 @@ public class Funcs : MonoBehaviour
     public static Funcs Get() => _funcs;
 
     [SerializeField] private LayerMask playerLayerMask;
-    [SerializeField] private LayerMask playeplatformLayerMask;
+    [SerializeField] private LayerMask platformLayerMask;
 
     private void Awake()
     {

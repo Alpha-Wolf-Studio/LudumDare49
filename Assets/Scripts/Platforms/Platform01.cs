@@ -8,6 +8,7 @@ public class Platform01 : MonoBehaviour, IPlatform
     public SpriteRenderer[] sprites;
     private void Awake()
     {
+        allSprites = FindObjectOfType<AllSpritesPlatforms>();
         rb = GetComponent<Rigidbody2D>();
     }
     private void Start()
