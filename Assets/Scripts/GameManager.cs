@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Action OnResetLevel;
     public Player player;
+    public Action OnStageChange;
 
     [Header("Platforms Configurations")]
     [SerializeField] Transform cameraTransform = null;
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
             nextColorIndex = nextColorIndex + 1 == posibleThemeColors.Count ? 0 : currentColorIndex + 1;
             cameraStartingPosX = cameraTransform.position.x;
             cameraFinalPosX = cameraStartingPosX + posibleThemeColors[currentColorIndex].distanceToChange;
+            OnStageChange?.Invoke();
         }
     }
     IEnumerator PlatformSpawn()
@@ -119,6 +121,7 @@ public class GameManager : MonoBehaviour
         var folder = go.GetComponent<InformationPackage>();
         activePackages.Add(folder);
         folder.OnDestroy += OnFolderDestroy;
+        
     }
     private void DestroyAllActiveFolders()
     {
