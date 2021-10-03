@@ -12,5 +12,11 @@ public class Firewall : MonoBehaviour
             player.Die();
             return;
         }
+
+        IPlatform platform = collision.GetComponent<IPlatform>();
+        if (platform != null)
+        {
+            platform.DestroyBase();
+        }
     }
 }

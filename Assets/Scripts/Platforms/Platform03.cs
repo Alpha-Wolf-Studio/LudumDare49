@@ -41,6 +41,7 @@ public class Platform03 : MonoBehaviour, IPlatform
     {
         yield return new WaitForSeconds(timeToRemovePlatform);
         lowPlatform.SetActive(false);
+        basePlatform.DestroyPlatform();
     }
     void IPlatform.DestroyBase()
     {

@@ -48,7 +48,7 @@ public class Platform02 : MonoBehaviour, IPlatform
             yield return null;
         }
         rb.bodyType = RigidbodyType2D.Dynamic;
-        //basePlatform.DestroyPlatform();
+        basePlatform.DestroyPlatform();
     }
     void NextGlitch()
     {

@@ -23,6 +23,7 @@ public class Platform01 : MonoBehaviour, IPlatform
             {
                 firstCollision = true;
                 rb.isKinematic = false;
+                basePlatform.DestroyPlatform();
             }
         }
     }

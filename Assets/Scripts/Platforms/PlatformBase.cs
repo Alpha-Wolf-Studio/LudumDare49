@@ -1,15 +1,22 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 public class PlatformBase : MonoBehaviour
 {
-
+    [SerializeField] float timeToDestroyPlatform = 10f;
     [SerializeField] SpriteRenderer[] spritesToColor;
 
     public Action<PlatformBase> OnDestroy;
     public void DestroyPlatform()
     {
-        OnDestroy?.Invoke(this);
+        StartCoroutine(DestroyCoroutine());
+    }
+
+    IEnumerator DestroyCoroutine() 
+    {
+        yield return new WaitForSeconds(timeToDestroyPlatform);
         Destroy(gameObject);
+        OnDestroy?.Invoke(this);
     }
 
     public void SetSpritesColor(Color color) 

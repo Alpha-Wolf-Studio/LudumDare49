@@ -93,6 +93,7 @@ public class Platform04 : MonoBehaviour, IPlatform
                 if (Mathf.Abs(actualx) > distance)
                 {
                     rb.bodyType = RigidbodyType2D.Dynamic;
+                    basePlatform.DestroyPlatform();
                 }
                 else
                 {
