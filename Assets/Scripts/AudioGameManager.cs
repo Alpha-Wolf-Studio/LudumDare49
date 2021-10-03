@@ -21,7 +21,7 @@ public class AudioGameManager : MonoBehaviour
             Debug.LogWarning("player no está asignado.", gameObject);
         }
 
-        //SubscribeAllEvents();         Todo: Descomentar cuando haya audios.
+        SubscribeAllEvents();         //Todo: Descomentar cuando haya audios.
     }
     private void SubscribeAllEvents()
     {
