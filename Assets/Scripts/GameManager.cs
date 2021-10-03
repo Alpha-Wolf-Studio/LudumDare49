@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     {
         go = Instantiate(randomPlatformsPrefabs[randomIndex], spawnPos, Quaternion.identity, transform);
         platform = go.GetComponent<PlatformBase>();
+        platform.SetSpritesColor(currentThemeColor);
         platform.OnDestroy += OnPlatformDestroy;
         activePlatforms.Add(platform);
     }
