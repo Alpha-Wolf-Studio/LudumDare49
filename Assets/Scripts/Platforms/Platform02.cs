@@ -48,7 +48,7 @@ public class Platform02 : MonoBehaviour, IPlatform
     }
     void NextGlitch()
     {
-        Debug.Log("Next Glitch.");
+        //Debug.Log("Next Glitch.");
         currenGlitch++;
         glitches[currenGlitch].gameObject.SetActive(true);
         float timePerGlitch = maxTimeAlive / glitches.Length;

@@ -97,7 +97,7 @@ public class Platform04 : MonoBehaviour, IPlatform
                 else
                 {
                     Vector3 posBar = imageBar.transform.localPosition;
-                    Debug.Log("Actualizando pos: " + actualx);
+                    //Debug.Log("Actualizando pos: " + actualx);
                     imageBar.transform.localPosition = new Vector3(actualx, posBar.y, posBar.z);
                 }
             }

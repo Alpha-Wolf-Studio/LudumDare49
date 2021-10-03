@@ -41,7 +41,7 @@ public class ComponentHasGlitch : MonoBehaviour
     }
     void SetNewSprite()
     {
-        Debug.Log("Seteo un nuevo Sprite.");
+        //Debug.Log("Seteo un nuevo Sprite.");
         onTime = 0;
         int random = Random.Range(0, allSprites.spritesGlitchs.Length);
         spriteRenderer.sprite = allSprites.spritesGlitchs[random];
