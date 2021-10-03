@@ -13,7 +13,7 @@ public class Platform02 : MonoBehaviour, IPlatform
 
     private void Awake()
     {
-        allSprites = FindObjectOfType<AllSpritesPlatforms>();
+        allSprites = AllSpritesPlatforms.Get();
     }
     private void Start()
     {

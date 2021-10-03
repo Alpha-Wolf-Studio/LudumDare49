@@ -6,7 +6,7 @@ public class ComponentRandomSprite : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private void Awake()
     {
-        allSprites = FindObjectOfType<AllSpritesPlatforms>();
+        allSprites = AllSpritesPlatforms.Get();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void Start()
@@ -15,8 +15,8 @@ public class ComponentRandomSprite : MonoBehaviour
         switch (typeSprite)
         {
             case AllSpritesPlatforms.TypeSprite.Files:
-                random = Random.Range(0, allSprites.spritesFiles.Length);
-                spriteRenderer.sprite = allSprites.spritesFiles[random];
+                random = Random.Range(0, allSprites.spritesFolders.Length);
+                spriteRenderer.sprite = allSprites.spritesFolders[random];
                 break;
             case AllSpritesPlatforms.TypeSprite.Glitchs:
                 random = Random.Range(0, allSprites.spritesGlitchs.Length);

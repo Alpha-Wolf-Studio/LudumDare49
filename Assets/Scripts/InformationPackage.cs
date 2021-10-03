@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class InformationPackage : MonoBehaviour
 {
-    [SerializeField] private int points = 20;
+    [SerializeField] private int minPoints = 20;
+    [SerializeField] private int maxPoints = 100;
+    int currentPoints = 0;
     private BoxCollider2D box;
-    private Rigidbody2D rb;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
+        currentPoints = Random.Range(20, 100);
+        var allSprites = AllSpritesPlatforms.Get();
+        int randomPosition = Random.Range(0, allSprites.spritesFolders.Length);
+        GetComponent<SpriteRenderer>().sprite = allSprites.spritesFolders[randomPosition];
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -19,7 +24,7 @@ public class InformationPackage : MonoBehaviour
         Player player = collision.collider.GetComponent<Player>();
         if (player)
         {
-            player.CollectPoints(points);
+            player.CollectPoints(currentPoints);
             return;
         }
     }

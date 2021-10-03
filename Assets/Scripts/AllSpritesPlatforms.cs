@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 public class AllSpritesPlatforms : MonoBehaviour
 {
+
+    static AllSpritesPlatforms instance;
+    static public AllSpritesPlatforms Get() => instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     public enum TypeSprite
     {
         Searcher,
@@ -10,7 +17,7 @@ public class AllSpritesPlatforms : MonoBehaviour
         ScrollBar
     }
     public Sprite[] spritesSearcher;
-    public Sprite[] spritesFiles;
+    public Sprite[] spritesFolders;
     public Sprite[] spritesGlitchs;
     public Sprite[] spritesIcons;
     public Sprite[] spritesScrollBar;
