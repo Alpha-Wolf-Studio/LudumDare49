@@ -1,55 +1,55 @@
 fileFormatVersion: 2
-guid: fd417142680926b4cb34cba5585a5ae9
+guid: c872d8212507a9a4d80cdf899348488a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 444702640956841479
-    second: PlayerJump_0
+      213: -6051150630014608449
+    second: Player_-_saltandoB2_0
   - first:
-      213: -7941400250425145444
-    second: PlayerJump_1
+      213: 3394523980280818993
+    second: Player_-_saltandoB2_1
   - first:
-      213: 496497603323687001
-    second: PlayerJump_2
+      213: -3981218041987688436
+    second: Player_-_saltandoB2_2
   - first:
-      213: 8691810124558177054
-    second: PlayerJump_3
+      213: -4640438689434012764
+    second: Player_-_saltandoB2_3
   - first:
-      213: -2098300212452292270
-    second: PlayerJump_4
+      213: -9021156308108022673
+    second: Player_-_saltandoB2_4
   - first:
-      213: -2178818368794951686
-    second: PlayerJump_5
+      213: 9191444225100371767
+    second: Player_-_saltandoB2_5
   - first:
-      213: 8744439205818513450
-    second: PlayerJump_6
+      213: 866328987813481495
+    second: Player_-_saltandoB2_6
   - first:
-      213: -1831677882150188195
-    second: PlayerJump_7
+      213: -4640135597241850979
+    second: Player_-_saltandoB2_7
   - first:
-      213: -1195176971817732050
-    second: PlayerJump_8
+      213: 897340510447029126
+    second: Player_-_saltandoB2_8
   - first:
-      213: -983954678055824977
-    second: PlayerJump_9
+      213: -155843269086142627
+    second: Player_-_saltandoB2_9
   - first:
-      213: -4256586781367078120
-    second: PlayerJump_10
+      213: 5833220740680801347
+    second: Player_-_saltandoB2_10
   - first:
-      213: 89184870379428924
-    second: PlayerJump_11
+      213: -3522667471291452064
+    second: Player_-_saltandoB2_11
   - first:
-      213: -5564876198154315674
-    second: PlayerJump_12
+      213: -2712492150298906704
+    second: Player_-_saltandoB2_12
   - first:
-      213: 919512309792203914
-    second: PlayerJump_13
+      213: 1779374239339581129
+    second: Player_-_saltandoB2_13
   - first:
-      213: 5922755466697560486
-    second: PlayerJump_14
+      213: 2720029767436905905
+    second: Player_-_saltandoB2_14
   - first:
-      213: 7893620249462060183
-    second: PlayerJump_15
+      213: 2308368489381096100
+    second: Player_-_saltandoB2_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -144,30 +144,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -183,13 +159,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerJump_0
+      name: Player_-_saltandoB2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 178
-        height: 100
+        x: 29
+        y: 17
+        width: 101
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70e19e022b6eb2600800000000000000
-      internalID: 444702640956841479
+      spriteID: fbb1997ff8ef50ca0800000000000000
+      internalID: -6051150630014608449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_1
+      name: Player_-_saltandoB2_1
       rect:
         serializedVersion: 2
-        x: 178
-        y: 0
-        width: 178
-        height: 100
+        x: 210
+        y: 15
+        width: 99
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c97063e2c8a7ac190800000000000000
-      internalID: -7941400250425145444
+      spriteID: 13dee2a3395cb1f20800000000000000
+      internalID: 3394523980280818993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_2
+      name: Player_-_saltandoB2_2
       rect:
         serializedVersion: 2
-        x: 356
-        y: 0
-        width: 178
-        height: 100
+        x: 387
+        y: 16
+        width: 100
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 950f0fd80f9e3e600800000000000000
-      internalID: 496497603323687001
+      spriteID: c0892f1c84fdfb8c0800000000000000
+      internalID: -3981218041987688436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_3
+      name: Player_-_saltandoB2_3
       rect:
         serializedVersion: 2
-        x: 534
-        y: 0
-        width: 178
-        height: 100
+        x: 563
+        y: 17
+        width: 101
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e131f61d1438f9870800000000000000
-      internalID: 8691810124558177054
+      spriteID: 4a37e4a1999d99fb0800000000000000
+      internalID: -4640438689434012764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_4
+      name: Player_-_saltandoB2_4
       rect:
         serializedVersion: 2
-        x: 712
-        y: 0
-        width: 178
-        height: 100
+        x: 737
+        y: 17
+        width: 105
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,20 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25987a4f21751e2e0800000000000000
-      internalID: -2098300212452292270
+      spriteID: f6c62f7422a6ec280800000000000000
+      internalID: -9021156308108022673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_5
+      name: Player_-_saltandoB2_5
       rect:
         serializedVersion: 2
-        x: 890
-        y: 0
-        width: 178
-        height: 100
+        x: 913
+        y: 15
+        width: 108
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,20 +278,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aff71e9cc3843c1e0800000000000000
-      internalID: -2178818368794951686
+      spriteID: 7375ce903d19e8f70800000000000000
+      internalID: 9191444225100371767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_6
+      name: Player_-_saltandoB2_6
       rect:
         serializedVersion: 2
-        x: 1068
-        y: 0
-        width: 178
-        height: 100
+        x: 1091
+        y: 15
+        width: 107
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,20 +299,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a28bfcea02d7a5970800000000000000
-      internalID: 8744439205818513450
+      spriteID: 71c0f39df91d50c00800000000000000
+      internalID: 866328987813481495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_7
+      name: Player_-_saltandoB2_7
       rect:
         serializedVersion: 2
-        x: 1246
-        y: 0
-        width: 178
-        height: 100
+        x: 1268
+        y: 15
+        width: 106
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,20 +320,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5b8f7bbba29496e0800000000000000
-      internalID: -1831677882150188195
+      spriteID: d9321c0424dea9fb0800000000000000
+      internalID: -4640135597241850979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_8
+      name: Player_-_saltandoB2_8
       rect:
         serializedVersion: 2
-        x: 1424
-        y: 0
-        width: 178
-        height: 100
+        x: 1446
+        y: 18
+        width: 107
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,20 +341,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e28b31f50e0e96fe0800000000000000
-      internalID: -1195176971817732050
+      spriteID: 68b43cf907ef37c00800000000000000
+      internalID: 897340510447029126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_9
+      name: Player_-_saltandoB2_9
       rect:
         serializedVersion: 2
-        x: 1602
-        y: 0
-        width: 178
-        height: 100
+        x: 1624
+        y: 18
+        width: 108
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,20 +362,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa1166bfe6a4852f0800000000000000
-      internalID: -983954678055824977
+      spriteID: d5f1c795f5556ddf0800000000000000
+      internalID: -155843269086142627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_10
+      name: Player_-_saltandoB2_10
       rect:
         serializedVersion: 2
-        x: 1780
-        y: 0
-        width: 178
-        height: 100
+        x: 1802
+        y: 15
+        width: 106
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,20 +383,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 813fdfcefd09de4c0800000000000000
-      internalID: -4256586781367078120
+      spriteID: 34c58b0ab53c3f050800000000000000
+      internalID: 5833220740680801347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_11
+      name: Player_-_saltandoB2_11
       rect:
         serializedVersion: 2
-        x: 1958
-        y: 0
-        width: 178
-        height: 100
+        x: 1980
+        y: 8
+        width: 106
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,20 +404,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3c1e46ca29dc3100800000000000000
-      internalID: 89184870379428924
+      spriteID: 06579d74998fc1fc0800000000000000
+      internalID: -3522667471291452064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_12
+      name: Player_-_saltandoB2_12
       rect:
         serializedVersion: 2
-        x: 2136
-        y: 0
-        width: 178
-        height: 100
+        x: 2161
+        y: 8
+        width: 105
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -449,20 +425,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6685cfde49695c2b0800000000000000
-      internalID: -5564876198154315674
+      spriteID: 0bfe56db2ca4b5ad0800000000000000
+      internalID: -2712492150298906704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_13
+      name: Player_-_saltandoB2_13
       rect:
         serializedVersion: 2
-        x: 2314
-        y: 0
-        width: 178
-        height: 100
+        x: 2341
+        y: 4
+        width: 101
+        height: 78
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -470,20 +446,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8463cfe293c2cc00800000000000000
-      internalID: 919512309792203914
+      spriteID: 9ce0152717b91b810800000000000000
+      internalID: 1779374239339581129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_14
+      name: Player_-_saltandoB2_14
       rect:
         serializedVersion: 2
-        x: 2492
-        y: 0
-        width: 178
-        height: 100
+        x: 2524
+        y: 4
+        width: 99
+        height: 78
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,20 +467,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a1d20487bad13250800000000000000
-      internalID: 5922755466697560486
+      spriteID: 1bda09289ac7fb520800000000000000
+      internalID: 2720029767436905905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerJump_15
+      name: Player_-_saltandoB2_15
       rect:
         serializedVersion: 2
-        x: 2670
-        y: 0
-        width: 178
-        height: 100
+        x: 2700
+        y: 5
+        width: 101
+        height: 75
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -512,8 +488,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79434017bc5cb8d60800000000000000
-      internalID: 7893620249462060183
+      spriteID: 4aae34c29e8f80020800000000000000
+      internalID: 2308368489381096100
       vertices: []
       indices: 
       edges: []
@@ -521,7 +497,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d48319f82818b7c47a6bb0af505b319e
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

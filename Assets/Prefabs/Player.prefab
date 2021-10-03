@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7280985036092238373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.03, y: 10.53, z: 68.77381}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,8 +73,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 2287724791789468066, guid: 4ec66ac2dc449514fa1577606510684d,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxJumps: 2
   points: 0
-  isAlive: 1
   speed: 20
   jumps: 0
   isGrounded: 1
@@ -108,11 +108,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   initialPosition: {x: 0, y: 0}
-  deathY: -20
+  deathY: -25
   runAnimationBool: run
   idleAnimationBool: idle
   isGroundedAnimationBool: isGrounded
   dieAnimationTrigger: die
+  reviveAnimationTrigger: revive
 --- !u!50 &7280985036092238369
 Rigidbody2D:
   serializedVersion: 4
@@ -133,7 +134,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &7280985036092238366
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,18 +148,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1, y: 0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
+    oldSize: {x: 1.78, y: 0.57}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.9, y: 0.45}
   m_EdgeRadius: 0
 --- !u!95 &590433196
 Animator:
