@@ -30,8 +30,7 @@ public class GameManager : MonoBehaviour
     IEnumerator PlatformSpawnCoroutine =  null;
     IEnumerator ColorThemeCoroutine = null;
     List<PlatformBase> activePlatforms = new List<PlatformBase>();
-
-
+    
     void Start()
     {
         player.onDie += PlayerDie;
@@ -41,22 +40,16 @@ public class GameManager : MonoBehaviour
         ColorThemeCoroutine = UpdateColorTheme();
         StartCoroutine(ColorThemeCoroutine);
     }
-    void Update()
-    {
-
-    }
     void PlayerDie()
     {
         StartCoroutine(TestCoroutine());
     }
-
     IEnumerator TestCoroutine() 
     {
         Time.timeScale = 0.0f;
         yield return new WaitForSecondsRealtime(5.0f);
         ResetGame();
     }
-
     IEnumerator UpdateColorTheme() 
     {
         int currentColorIndex = 0;
@@ -78,28 +71,28 @@ public class GameManager : MonoBehaviour
             cameraFinalPosX = cameraStartingPosX + posibleThemeColors[currentColorIndex].distanceToChange;
         }
     }
-    IEnumerator PlatformSpawn() 
+    IEnumerator PlatformSpawn()
     {
         GameObject go;
         PlatformBase platform;
         Vector3 cameraStartingPos = cameraTransform.position;
         float randomSpawnDistance = UnityEngine.Random.Range(minDistanceToSpawn, maxDistanceToSpawn);
         float randomSpawnHeight = UnityEngine.Random.Range(minHeightToSpawn, maxHeightToSpawn);
-        while (true) 
+        while (true)
         {
             if (Vector3.Distance(cameraStartingPos, cameraTransform.position) > randomSpawnDistance)
             {
-                var randomIndex = UnityEngine.Random.Range(0, randomPlatformsPrefabs.Count);
+                int randomIndex = UnityEngine.Random.Range(0, randomPlatformsPrefabs.Count);
                 Vector3 spawnPos = new Vector3(cameraTransform.position.x + spawnDistanceXFromCamera, cameraTransform.position.y + randomSpawnHeight, 0);
                 CreateNewPlatform(out go, out platform, randomIndex, spawnPos);
                 cameraStartingPos = cameraTransform.position;
                 randomSpawnDistance = UnityEngine.Random.Range(minDistanceToSpawn, maxDistanceToSpawn);
                 randomSpawnHeight = UnityEngine.Random.Range(minHeightToSpawn, maxHeightToSpawn);
             }
+
             yield return null;
         }
     }
-
     private void CreateNewPlatform(out GameObject go, out PlatformBase platform, int randomIndex, Vector3 spawnPos)
     {
         go = Instantiate(randomPlatformsPrefabs[randomIndex], spawnPos, Quaternion.identity, transform);
@@ -113,7 +106,6 @@ public class GameManager : MonoBehaviour
             CreateFolder(spawnPos);
         }
     }
-
     void CreateFolder(Vector3 basePosition) 
     {
         float randomPosY = UnityEngine.Random.Range(minYPosFromPlatform, maxYPosFromPlatform);
@@ -125,7 +117,6 @@ public class GameManager : MonoBehaviour
         Vector3 folderPos = new Vector3(basePosition.x, newPosY, basePosition.z);
         Instantiate(folderPrefab, folderPos, Quaternion.identity, transform);
     }
-
     private void DestroyAllActivePlatforms()
     {
         foreach (var platform in activePlatforms)
@@ -134,12 +125,10 @@ public class GameManager : MonoBehaviour
         }
         activePlatforms.Clear();
     }
-
     void OnPlatformDestroy(PlatformBase platform) 
     {
         activePlatforms.Remove(platform);
     }
-
     private void ResetGame()
     {
         Time.timeScale = 1.0f;
@@ -157,5 +146,4 @@ public class GameManager : MonoBehaviour
 
         player.RevivePlayer();
     }
-
 }

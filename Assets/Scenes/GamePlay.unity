@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -301,6 +301,7 @@ MonoBehaviour:
   - {fileID: 2135172631134872100, guid: d9fd13a76c2ec124ca4ece17914829bb, type: 3}
   - {fileID: 6182892452553996207, guid: 6d23bb5c973ff02488ba7db12b195d1c, type: 3}
   - {fileID: 8838769283167249150, guid: 3d3b88bbc807f7b49a45f46327adc875, type: 3}
+  - {fileID: 7557640593893289579, guid: 221a13b67c95e614f85b91c4b5e145b5, type: 3}
   minDistanceToSpawn: 7.5
   maxDistanceToSpawn: 15
   minHeightToSpawn: -5
@@ -940,6 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf73b131eb9b4ff42a0e3effc223d8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 244570967}
   player: {fileID: 1617489882}
   speed: 5
   incrementalSpeed: 0.001
@@ -1317,12 +1319,12 @@ PrefabInstance:
     - target: {fileID: 7280985036092238368, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.08
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7280985036092238368, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.1
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 7280985036092238368, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
         type: 3}
@@ -1430,6 +1432,12 @@ MonoBehaviour:
   - {fileID: -9014922595667875912, guid: 9cb75963c701a69468a22f0c9482252a, type: 3}
   - {fileID: 4759269905845248274, guid: 9cb75963c701a69468a22f0c9482252a, type: 3}
   - {fileID: 6324946744578205242, guid: 9cb75963c701a69468a22f0c9482252a, type: 3}
+  - {fileID: -7867490571056242158, guid: 1657e9fa69b807647b14c20682738e1e, type: 3}
+  - {fileID: 754562022022806615, guid: 1657e9fa69b807647b14c20682738e1e, type: 3}
+  - {fileID: 1781087644795271653, guid: 1657e9fa69b807647b14c20682738e1e, type: 3}
+  - {fileID: -8315862136608589517, guid: 1657e9fa69b807647b14c20682738e1e, type: 3}
+  - {fileID: 7330607874303207021, guid: 1657e9fa69b807647b14c20682738e1e, type: 3}
+  - {fileID: 3109707561879365392, guid: 1657e9fa69b807647b14c20682738e1e, type: 3}
   spritesIcons:
   - {fileID: -7677804096845346522, guid: 06b496fd6f2a0c540a849206084bc5af, type: 3}
   - {fileID: 9202794514604970492, guid: 06b496fd6f2a0c540a849206084bc5af, type: 3}

@@ -32,7 +32,7 @@ public class CameraMovement : MonoBehaviour
     private void Movement()
     {
         float playerX = player.transform.position.x;
-        var transf = transform;
+        Transform transf = transform;
         Vector3 pos = transf.position;
 
         if (Mathf.Abs(playerX - transform.position.x) > catchUpDistanceX)
