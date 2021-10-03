@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 public class InGamePause : MonoBehaviour
 {
-    public static bool isPause;
+    bool isPause = false;
     public CanvasGroup[] ui;
 
     void Update()
@@ -13,7 +13,7 @@ public class InGamePause : MonoBehaviour
     }
     public void Pause()
     {
-        Time.timeScale = isPause ? 0 : 1;
+        Time.timeScale = isPause ? 1 : 0;
         isPause = !isPause;
 
         for (int i = 0; i < ui.Length; i++)
