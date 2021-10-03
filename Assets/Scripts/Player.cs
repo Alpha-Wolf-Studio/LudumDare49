@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private float horizontal;
     [SerializeField] private int maxJumps = 2;
-    [SerializeField] private int points = 0;
+    [SerializeField] public int points = 0;
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private int jumps = 0;
     [SerializeField] private bool isGrounded;
