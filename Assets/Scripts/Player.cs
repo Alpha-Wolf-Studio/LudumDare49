@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(speed * horizontal, jumpForce * vertical);
+        rb.velocity = new Vector2(speed * horizontal, rb.velocity.y);
     }
 
     void Update()
@@ -66,13 +66,12 @@ public class Player : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && jumps < maxJumps-1)
         {
-            vertical = 1;
             jumps++;
-            
+            rb.velocity = new Vector2(rb.velocity.x, 0.0f);
+            rb.AddForce((Vector2.up * jumpForce), ForceMode2D.Impulse);
         }
         else
         {
-            vertical -= 0.01f;
             if (GroundCheck())
             {
                 isGrounded = true;
