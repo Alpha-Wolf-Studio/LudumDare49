@@ -17,6 +17,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] float maxHeightToSpawn = 5f;
     [SerializeField] float spawnDistanceXFromCamera = 50f;
 
+    [Header("Folder Configurations")]
+    [SerializeField] GameObject folderPrefab;
+    [SerializeField] [Range(0, 100)] int spawnChance;
+    [SerializeField] float minYPosFromPlatform = 5f;
+    [SerializeField] float maxYPosFromPlatform = 10f;
+    [SerializeField] float maxYLimit = 15f;
     [Header("Theme Configurations")]
     [SerializeField] List<ColorTheme> posibleThemeColors = null;
     public Color currentThemeColor { get; set; }
@@ -48,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         int currentColorIndex = 0;
         int nextColorIndex = 1;
-        float t = 0;
+        float t;
         float cameraStartingPosX = cameraTransform.position.x;
         float cameraFinalPosX = cameraStartingPosX + posibleThemeColors[currentColorIndex].distanceToChange;
         while (true) 
@@ -63,7 +69,6 @@ public class GameManager : MonoBehaviour
             nextColorIndex = nextColorIndex + 1 == posibleThemeColors.Count ? 0 : currentColorIndex + 1;
             cameraStartingPosX = cameraTransform.position.x;
             cameraFinalPosX = cameraStartingPosX + posibleThemeColors[currentColorIndex].distanceToChange;
-            t = 0;
         }
     }
     IEnumerator PlatformSpawn() 
@@ -95,6 +100,23 @@ public class GameManager : MonoBehaviour
         platform.SetSpritesColor(currentThemeColor);
         platform.OnDestroy += OnPlatformDestroy;
         activePlatforms.Add(platform);
+        int randomChance = UnityEngine.Random.Range(0, 101);
+        if(randomChance <= spawnChance) 
+        {
+            CreateFolder(spawnPos);
+        }
+    }
+
+    void CreateFolder(Vector3 basePosition) 
+    {
+        float randomPosY = UnityEngine.Random.Range(minYPosFromPlatform, maxYPosFromPlatform);
+        float newPosY = basePosition.y + randomPosY;
+        if (newPosY > maxYLimit) 
+        {
+            newPosY = maxYLimit;
+        }
+        Vector3 folderPos = new Vector3(basePosition.x, newPosY, basePosition.z);
+        Instantiate(folderPrefab, folderPos, Quaternion.identity, transform);
     }
 
     private void DestroyAllActivePlatforms()

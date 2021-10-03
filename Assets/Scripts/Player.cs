@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     private BoxCollider2D box;
     private Rigidbody2D rb;
     private float horizontal;
-    private float vertical;
     [SerializeField] private int maxJumps = 2;
     [SerializeField] private int points = 0;
     [SerializeField] private bool isAlive = true;

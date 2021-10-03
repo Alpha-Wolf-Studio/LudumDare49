@@ -13,18 +13,19 @@ public class InformationPackage : MonoBehaviour
     private void Awake()
     {
         box = GetComponent<BoxCollider2D>();
-        currentPoints = Random.Range(20, 100);
+        currentPoints = Random.Range(minPoints, maxPoints);
         var allSprites = AllSpritesPlatforms.Get();
         int randomPosition = Random.Range(0, allSprites.spritesFolders.Length);
         GetComponent<SpriteRenderer>().sprite = allSprites.spritesFolders[randomPosition];
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.collider.GetComponent<Player>();
+        Player player = collision.GetComponent<Player>();
         if (player)
         {
             player.CollectPoints(currentPoints);
+            Destroy(gameObject);
             return;
         }
     }
