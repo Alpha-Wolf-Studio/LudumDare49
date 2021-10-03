@@ -1,39 +1,52 @@
 ﻿using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
 public class ComponentHasGlitch : MonoBehaviour
 {
+    public Action onDoneGlitch;
+
     private AllSpritesPlatforms allSprites;
     private float onTime;
-    [SerializeField] private float maxTime = 2;
     private float nextChangeTime;
+    private int currentChanges;
     private int maxChanges;
     private SpriteRenderer spriteRenderer;
+    private float glitchTime;
 
     private void Awake()
     {
-        allSprites = FindObjectOfType<AllSpritesPlatforms>();
+        allSprites = AllSpritesPlatforms.Get();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
     private void Start()
     {
+        maxChanges = Random.Range(3, allSprites.spritesGlitchs.Length);
+        nextChangeTime = glitchTime / maxChanges;
         SetNewSprite();
     }
-
     void Update()
     {
-        onTime += Time.deltaTime;
-        if (onTime > nextChangeTime)
+        if (currentChanges <= maxChanges)
         {
-            SetNewSprite();
+            onTime += Time.deltaTime;
+            if (onTime > nextChangeTime)
+            {
+                SetNewSprite();
+            }
         }
+    }
+    public void SetGlitch(float timePerGlitch)
+    {
+        glitchTime = timePerGlitch;
     }
     void SetNewSprite()
     {
+        Debug.Log("Seteo un nuevo Sprite.");
         onTime = 0;
-        nextChangeTime = Random.Range(0, maxTime);
-        spriteRenderer.sprite = allSprites.spritesGlitchs[Random.Range(0, allSprites.spritesGlitchs.Length)];
+        int random = Random.Range(0, allSprites.spritesGlitchs.Length);
+        spriteRenderer.sprite = allSprites.spritesGlitchs[random];
+        if (currentChanges >= maxChanges)
+            onDoneGlitch?.Invoke();
+        currentChanges++;
     }
 }

@@ -11,7 +11,7 @@ public class AllSpritesPlatforms : MonoBehaviour
     public enum TypeSprite
     {
         Searcher,
-        Files,
+        Folders,
         Glitchs,
         Icons,
         ScrollBar

@@ -14,7 +14,7 @@ public class ComponentRandomSprite : MonoBehaviour
         int random = 0;
         switch (typeSprite)
         {
-            case AllSpritesPlatforms.TypeSprite.Files:
+            case AllSpritesPlatforms.TypeSprite.Folders:
                 random = Random.Range(0, allSprites.spritesFolders.Length);
                 spriteRenderer.sprite = allSprites.spritesFolders[random];
                 break;
@@ -34,8 +34,5 @@ public class ComponentRandomSprite : MonoBehaviour
                 Debug.Log("Default no tiene random este tipo. ", gameObject);
                 break;
         }
-
-        // Owinmowe setear Color acá. xd
-
     }
 }
