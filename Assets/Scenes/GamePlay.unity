@@ -302,11 +302,10 @@ MonoBehaviour:
   - {fileID: 6182892452553996207, guid: 6d23bb5c973ff02488ba7db12b195d1c, type: 3}
   - {fileID: 8838769283167249150, guid: 3d3b88bbc807f7b49a45f46327adc875, type: 3}
   - {fileID: 7557640593893289579, guid: 221a13b67c95e614f85b91c4b5e145b5, type: 3}
-  minDistanceToSpawn: 7.5
-  maxDistanceToSpawn: 15
+  distanceToSpawn: 15
   minHeightToSpawn: -5
   maxHeightToSpawn: 5
-  spawnDistanceXFromCamera: 30
+  spawnDistanceXFromCamera: 35
   folderPrefab: {fileID: 3006181324425665170, guid: 784e674b01e5c30439dfead2d5386084,
     type: 3}
   spawnChance: 25
@@ -1074,7 +1073,7 @@ MonoBehaviour:
   speed: 5
   incrementalSpeed: 0.001
   catchUpDistanceX: 8
-  catchUpSpeedMultiplier: 3
+  catchUpSpeedMultiplier: 1
 --- !u!1 &1295292717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,8 +1911,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1.5
-    height: 1.25
+    width: 1
+    height: 1
 --- !u!222 &2376940780450131322
 CanvasRenderer:
   m_ObjectHideFlags: 0
