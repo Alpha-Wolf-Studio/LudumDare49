@@ -30,4 +30,9 @@ public class InGamePause : MonoBehaviour
             pauseOff[i].interactable = !isPause;
         }
     }
+
+    public void BackToMenu()
+    {
+        SceneManager.Get().LoadSceneAsync("MainMenu");
+    }
 }

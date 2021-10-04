@@ -10,6 +10,7 @@ public class UIMenuManager : MonoBehaviour
 
     void Start()
     {
+        AudioGameManager.Get().MenuMusic();
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

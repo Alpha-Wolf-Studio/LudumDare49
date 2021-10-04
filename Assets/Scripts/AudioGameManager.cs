@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
-public class AudioGameManager : MonoBehaviour
+public class AudioGameManager : MonoBehaviourSingleton<AudioGameManager>
 {
     [SerializeField] private Player player;
+    [SerializeField] private AudioClip[] musics;
+    [SerializeField] private AudioSource musicSource;
     public AudioMixer[] audioMixer;
     private float maxVol = 20;
     private float minVol = -30;
     private float distVol;
+    
 
     public enum Sounds     // Esto se ordena dependiendo del array objectsSounds !!
     {
@@ -21,16 +24,21 @@ public class AudioGameManager : MonoBehaviour
 
     private void Start()
     {
-        distVol = Mathf.Abs(maxVol - minVol) / 10;
 
         if (!player)
         {
             player = FindObjectOfType<Player>();
             Debug.LogWarning("player no está asignado.", gameObject);
         }
-
-        SubscribeAllEvents();         //Todo: Descomentar cuando haya audios.
+        if (player)SubscribeAllEvents();         //Todo: Descomentar cuando haya audios.
     }
+
+    public void SetPlayer(Player p)
+    {
+        player = p;
+        SubscribeAllEvents();
+    }
+
     private void SubscribeAllEvents()
     {
         player.onDie += OnDie;
@@ -62,6 +70,7 @@ public class AudioGameManager : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
+        distVol = Mathf.Abs(maxVol - minVol) / 10;
         if (volume < 1)
         {
             audioMixer[0].SetFloat("MasterVolume", -80);
@@ -74,6 +83,7 @@ public class AudioGameManager : MonoBehaviour
 
     public void SetEffectVolume(float volume)
     {
+        distVol = Mathf.Abs(maxVol - minVol) / 10;
         if (volume < 1)
         {
             audioMixer[1].SetFloat("EffectsVolume", -80);
@@ -86,6 +96,7 @@ public class AudioGameManager : MonoBehaviour
     }
     public void SetMusicVolume(float volume)
     {
+        distVol = Mathf.Abs(maxVol - minVol) / 10;
         if (volume < 1)
         {
             audioMixer[2].SetFloat("MusicVolume", -80);
@@ -94,5 +105,17 @@ public class AudioGameManager : MonoBehaviour
         {
             audioMixer[2].SetFloat("MusicVolume", minVol + volume * distVol);
         }
+    }
+
+    public void MenuMusic()
+    {
+        musicSource.clip = musics[0];
+        musicSource.Play();
+    }
+
+    public void GameplayMusic()
+    {
+        musicSource.clip = musics[1];
+        musicSource.Play();
     }
 }

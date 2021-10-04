@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 109070728404240876}
   - component: {fileID: 109070728404240877}
   - component: {fileID: 109070728404240878}
+  - component: {fileID: 1306842469}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -369,3 +370,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 109070727888218377}
   textComponent: {fileID: 109070728342855025}
+--- !u!225 &1306842469
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109070728404240872}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

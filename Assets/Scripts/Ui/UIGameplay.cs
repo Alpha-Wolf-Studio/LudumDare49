@@ -21,6 +21,11 @@ public class UIGameplay : MonoBehaviour
         startingRect = backgroundImage.uvRect;
     }
 
+    private void Start()
+    {
+        AudioGameManager.Get().GameplayMusic();    
+    }
+
     private void Update()
     {
         if(cameraTransform.position.x > aux + 1300) 

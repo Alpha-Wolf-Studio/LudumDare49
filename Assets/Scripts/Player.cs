@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
+        AudioGameManager.Get().SetPlayer(this);
     }
 
     private void FixedUpdate()
