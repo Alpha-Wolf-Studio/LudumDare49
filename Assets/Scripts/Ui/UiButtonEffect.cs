@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private float scaleMultiply = 3;
     [SerializeField] private float limit = 1.2f;
+    [SerializeField] private bool changeColor;
+    [SerializeField] private Color mouseHover = Color.green;
+    private Color notMouseHover;
+    private Image image;
     private bool increment = false;
     private Vector3 initialScale;
     private Vector3 scale;
@@ -12,6 +17,15 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         increment = false;
         initialScale = transform.localScale;
+    }
+
+    private void Start()
+    {
+        if (changeColor)
+        {
+            image = GetComponent<Image>();
+            notMouseHover = image.color;
+        }
     }
 
     private void OnEnable()
@@ -28,11 +42,19 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnMouseEnterButton()
     {
         increment = true;
+        if (changeColor)
+        {
+            image.color = mouseHover;
+        }
         // todo: evento de mouse sobre boton ENTRA.
     }
     public void OnMouseExitButton()
     {
         increment = false;
+        if (changeColor)
+        {
+            image.color = notMouseHover;
+        }
         // todo: evento de mouse sobre boton SALE.
     }
     private void ChangeScale()
