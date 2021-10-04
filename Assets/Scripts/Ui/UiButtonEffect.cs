@@ -1,24 +1,35 @@
-﻿using UnityEngine;
+﻿using System;
+using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+[RequireComponent(typeof(AudioSource))]
 public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [Header("Image")]
+    [SerializeField] private bool changeColor;
     [SerializeField] private float scaleMultiply = 3;
     [SerializeField] private float limit = 1.2f;
-    [SerializeField] private bool changeColor;
     [SerializeField] private Color mouseHover = Color.green;
     private Color notMouseHover;
     private Image image;
-    private bool increment = false;
     private Vector3 initialScale;
     private Vector3 scale;
+    private bool increment;
+    
+    [Header("Text")]
+    [SerializeField] private bool changeColorText;
+    [SerializeField] private TextMeshProUGUI textMesh;
+    private Color notMouseHoverText;
+
+    [Header("Sound")] 
+    private AudioSource audioSource;
 
     private void Awake()
     {
         increment = false;
         initialScale = transform.localScale;
     }
-
     private void Start()
     {
         if (changeColor)
@@ -26,19 +37,21 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             image = GetComponent<Image>();
             notMouseHover = image.color;
         }
+        if (changeColorText && textMesh)
+        {
+            notMouseHoverText = textMesh.color;
+        }
+        audioSource = GetComponent<AudioSource>();
     }
-
     private void OnEnable()
     {
         transform.localScale = initialScale;
         increment = false;
     }
-
     private void Update()
     {
         ChangeScale();
     }
-
     public void OnMouseEnterButton()
     {
         increment = true;
@@ -46,7 +59,11 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             image.color = mouseHover;
         }
-        // todo: evento de mouse sobre boton ENTRA.
+        if (changeColorText && textMesh)
+        {
+            textMesh.color = mouseHover;
+        }
+        audioSource.Play();
     }
     public void OnMouseExitButton()
     {
@@ -55,7 +72,10 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             image.color = notMouseHover;
         }
-        // todo: evento de mouse sobre boton SALE.
+        if (changeColorText && textMesh)
+        {
+            textMesh.color = notMouseHoverText;
+        }
     }
     private void ChangeScale()
     {
@@ -86,7 +106,6 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             }
         }
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         OnMouseEnterButton();
