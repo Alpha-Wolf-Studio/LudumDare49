@@ -7,8 +7,14 @@ public class Platform03 : Platform
     [SerializeField] private GameObject rightSidePlatform;
     [SerializeField] private GameObject lowPlatform;
 
-    [Space(10)] 
+    [Header("Corruption")] 
     [SerializeField] private float timeToRemovePlatform = 1f;
+    private float minRandomAlive = 1f;
+    private float MaxRandomAlive = 1.5f;
+    private float maxTimeAlive;
+    private float onTimeAlive;
+    public ComponentHasGlitch[] glitches;
+    private int currenGlitch = -1;
 
     private Rigidbody2D rb;
     private Rigidbody2D leftRB;
@@ -25,6 +31,7 @@ public class Platform03 : Platform
         rb.bodyType = RigidbodyType2D.Static;
         leftRB.bodyType = RigidbodyType2D.Static;
         rightRB.bodyType = RigidbodyType2D.Static;
+        maxTimeAlive = Random.Range(minRandomAlive, MaxRandomAlive);
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -35,6 +42,13 @@ public class Platform03 : Platform
             rightRB.bodyType = RigidbodyType2D.Dynamic;
             StartCoroutine(DestroyLowPlatform());
             other.gameObject.GetComponent<Player>().CollectPoints(scoreOnCorruption);
+            for (int i = 0; i < glitches.Length; i++)
+            {
+                glitches[i].onDoneGlitch += NextGlitch;
+            }
+            glitches[0].gameObject.SetActive(true);
+            NextGlitch();
+            StartCoroutine(StartDestroy());
             firstCollision = true;
         }
     }
@@ -43,5 +57,26 @@ public class Platform03 : Platform
         yield return new WaitForSeconds(timeToRemovePlatform);
         lowPlatform.SetActive(false);
         basePlatform.DestroyPlatform();
+    }
+    IEnumerator StartDestroy()
+    {
+        while (onTimeAlive < maxTimeAlive)
+        {
+            onTimeAlive += Time.deltaTime;
+            yield return null;
+        }
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        basePlatform.DestroyPlatform();
+    }
+    void NextGlitch()
+    {
+        //Debug.Log("Next Glitch.");
+        currenGlitch++;
+        if (currenGlitch < glitches.Length)
+        {
+            glitches[currenGlitch].gameObject.SetActive(true);
+            float timePerGlitch = maxTimeAlive / glitches.Length;
+            glitches[currenGlitch].SetGlitch(timePerGlitch);
+        }
     }
 }
