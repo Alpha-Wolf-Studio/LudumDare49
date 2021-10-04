@@ -2017,7 +2017,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 7
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2718,6 +2718,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7280985036092238370, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
+        type: 3}
+      propertyPath: deathY
+      value: -21
+      objectReference: {fileID: 0}
     - target: {fileID: 7280985036092238373, guid: 4fac8f4bb3019bb44aa411cc4e01a731,
         type: 3}
       propertyPath: m_Name
@@ -2786,7 +2791,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.7
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -5412,7 +5417,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8242371870846871715, guid: 7f9d8c40ee17145429b56051806f64df,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: deea7260d0538044996a64b4d862fed3, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -5550,7 +5555,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8242371870846871715, guid: 7f9d8c40ee17145429b56051806f64df,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: deea7260d0538044996a64b4d862fed3, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

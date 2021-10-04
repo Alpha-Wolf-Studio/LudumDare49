@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
             jumps = 0;
         }
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && jumps < maxJumps-1)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && jumps < maxJumps - 1)
         {
             jumps++;
             rb.velocity = new Vector2(rb.velocity.x, 0.0f);
