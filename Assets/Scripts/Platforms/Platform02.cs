@@ -35,7 +35,7 @@ public class Platform02 : Platform
                 glitches[0].gameObject.SetActive(true);
                 NextGlitch();
                 StartCoroutine(StartDestroy());
-                other.gameObject.GetComponent<Player>().CollectPoints(score);
+                other.gameObject.GetComponent<Player>().CollectPoints(scoreOnCorruption);
             }
         }
     }

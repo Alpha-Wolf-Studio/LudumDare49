@@ -34,7 +34,7 @@ public class Platform03 : Platform
             leftRB.bodyType = RigidbodyType2D.Dynamic;
             rightRB.bodyType = RigidbodyType2D.Dynamic;
             StartCoroutine(DestroyLowPlatform());
-            other.gameObject.GetComponent<Player>().CollectPoints(score);
+            other.gameObject.GetComponent<Player>().CollectPoints(scoreOnCorruption);
             firstCollision = true;
         }
     }

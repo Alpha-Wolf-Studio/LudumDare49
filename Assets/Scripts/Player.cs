@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D box;
     private Rigidbody2D rb;
     private float horizontal;
+    [Header("Player Movement")]
     [SerializeField] private int maxJumps = 2;
     [SerializeField] public int points = 0;
     [SerializeField] private float speed = 5.0f;
@@ -21,8 +22,12 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask platformLayers;
     [SerializeField] Vector2 initialPosition;
     [SerializeField] float deathY = -10.0f;
+    
     bool isAlive = true;
     public float GetSpeed() => speed;
+
+    [Header("Player UI")]
+    [SerializeField] GameObject scoreAddTextGo;
 
     [Header("Animation")]
     [SerializeField] string runAnimationBool = "run";
@@ -139,7 +144,9 @@ public class Player : MonoBehaviour
 
     public void CollectPoints(int points)
     {
+        onCollect?.Invoke(points);
         this.points += points;
-        onCollect?.Invoke(this.points);
+        GameObject go = Instantiate(scoreAddTextGo, transform.position, Quaternion.identity);
+        go.GetComponent<UIScoreAddText>().SetScoreText(points);
     }
 }

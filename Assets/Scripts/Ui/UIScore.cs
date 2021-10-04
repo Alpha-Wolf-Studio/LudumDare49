@@ -6,12 +6,14 @@ public class UIScore : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI stageText;
+
     [Header("Glowing Configuration")]
     [SerializeField] float glowingSpeed = 1f;
     [SerializeField] Color glowDownColor;
     [SerializeField] Color glowUpColor;
     bool glowingUp = true;
     float t = 0;
+    int currentScore = 0;
 
     private int stage = 0;
     Player player;
@@ -21,10 +23,12 @@ public class UIScore : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
+        player.onCollect += OnScoreChange;
         gameManager = FindObjectOfType<GameManager>();
         gameManager.OnStageChange += ShowChangeState;
         gameManager.OnResetLevel += ResetStage;
         stageText.text = "STAGE - 0";
+        scoreText.text = "Score - 0";
         scoreText.color = glowDownColor;
     }
 
@@ -49,7 +53,13 @@ public class UIScore : MonoBehaviour
         }
         scoreText.color = Color.Lerp(glowDownColor, glowUpColor, t);
         stageText.color = Color.Lerp(glowDownColor, glowUpColor, t);
-        scoreText.text = "Score - " + player.points.ToString();
+        
+    }
+
+    void OnScoreChange(int score) 
+    {
+        currentScore += score;
+        scoreText.text = "Score - " + currentScore.ToString();
     }
 
     void ShowChangeState()

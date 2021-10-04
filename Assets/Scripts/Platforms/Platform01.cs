@@ -24,7 +24,7 @@ public class Platform01 : Platform
                 rb.isKinematic = false;
                 if(searchBarGO) searchBarGO.SetActive(true);
                 basePlatform.DestroyPlatform();
-                other.gameObject.GetComponent<Player>().CollectPoints(score);
+                other.gameObject.GetComponent<Player>().CollectPoints(scoreOnCorruption);
             }
         }
     }

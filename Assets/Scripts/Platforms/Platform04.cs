@@ -92,7 +92,7 @@ public class Platform04 : Platform
                 if (Mathf.Abs(actualx) > distance)
                 {
                     rb.bodyType = RigidbodyType2D.Dynamic;
-                    other.gameObject.GetComponent<Player>().CollectPoints(score);
+                    other.gameObject.GetComponent<Player>().CollectPoints(scoreOnCorruption);
                     firstCollision = false;
                     basePlatform.DestroyPlatform();
                 }
