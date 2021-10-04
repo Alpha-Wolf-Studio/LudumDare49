@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basePlatform: {fileID: 3743736040914093604}
-  score: 10
+  scoreOnCorruption: 10
   searchBarGO: {fileID: 896436371960256280}
   sprites:
   - {fileID: 5648617443824360859}
@@ -197,7 +197,7 @@ MonoBehaviour:
   - Karbirus
   - Vquilria
   - Mr Benz
-  - Tsukasa
+  - Moonlight Dagger
   - Fley
   - Cave
   - Dilox
