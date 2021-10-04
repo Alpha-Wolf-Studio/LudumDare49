@@ -7,9 +7,6 @@ public class UIScore : MonoBehaviour
     [Header("References")]
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI stageText;
-    [Header("Fade Configuration")]
-    [SerializeField] float timeBeforeFade = 2f;
-    [SerializeField] float fadeSpeed = 1f;
     [Header("Glowing Configuration")]
     [SerializeField] float glowingSpeed = 1f;
     [SerializeField] float alphaSpeed = 0.5f;
@@ -79,8 +76,13 @@ public class UIScore : MonoBehaviour
 
     void ResetStage()
     {
-        currentStage=0;
+        currentStage = 0;
+        currentScore = 0;
+        scoreText.text = "Score - " + currentScore.ToString();
         stageText.text = "STAGE - " + currentStage.ToString();
+        stageText.color = new Color(stageText.color.r, stageText.color.g, stageText.color.b, 0);
+        firstShow = true;
+        alphaUp = true;
     }
 
     void ShowStage()
