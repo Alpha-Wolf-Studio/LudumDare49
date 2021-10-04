@@ -12,9 +12,12 @@ public class UIScore : MonoBehaviour
     [SerializeField] float fadeSpeed = 1f;
     [Header("Glowing Configuration")]
     [SerializeField] float glowingSpeed = 1f;
+    [SerializeField] float alphaSpeed = 0.5f;
     [SerializeField] Color glowDownColor;
     [SerializeField] Color glowUpColor;
+    private bool firstShow = true;
     bool glowingUp = true;
+    bool alphaUp = true;
     float t = 0;
     int currentScore = 0;
 
@@ -33,6 +36,8 @@ public class UIScore : MonoBehaviour
         stageText.text = "STAGE - 0";
         scoreText.text = "Score - 0";
         scoreText.color = glowDownColor;
+        stageText.color = glowDownColor;
+        stageText.alpha = 0;
     }
 
     // Update is called once per frame
@@ -55,7 +60,7 @@ public class UIScore : MonoBehaviour
             }
         }
         scoreText.color = Color.Lerp(glowDownColor, glowUpColor, t);
-        stageText.color = Color.Lerp(glowDownColor, glowUpColor, t);
+        ShowStage();
     }
 
     void OnScoreChange(int score) 
@@ -68,11 +73,33 @@ public class UIScore : MonoBehaviour
     {
         currentStage++;
         stageText.text = "STAGE - " + currentStage.ToString();
+        firstShow = true;
+        alphaUp = true;
     }
 
     void ResetStage()
     {
         currentStage=0;
         stageText.text = "STAGE - " + currentStage.ToString();
+    }
+
+    void ShowStage()
+    {
+        if (stageText.color.a < 1 && firstShow && alphaUp)
+        {
+            stageText.alpha = stageText.color.a + Time.deltaTime * alphaSpeed;
+            if (stageText.alpha >= 1)
+            {
+                alphaUp = false;
+            }
+        }
+        else if (stageText.color.a > 0 && firstShow && !alphaUp)
+        {
+            stageText.alpha = stageText.color.a - Time.deltaTime * alphaSpeed;
+            if (stageText.color.a == 0.0f)
+            {
+                firstShow = false;
+            }
+        }
     }
 }
