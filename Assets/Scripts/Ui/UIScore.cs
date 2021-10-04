@@ -4,9 +4,12 @@ using TMPro;
 
 public class UIScore : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI stageText;
-
+    [Header("Fade Configuration")]
+    [SerializeField] float timeBeforeFade = 2f;
+    [SerializeField] float fadeSpeed = 1f;
     [Header("Glowing Configuration")]
     [SerializeField] float glowingSpeed = 1f;
     [SerializeField] Color glowDownColor;
@@ -15,7 +18,7 @@ public class UIScore : MonoBehaviour
     float t = 0;
     int currentScore = 0;
 
-    private int stage = 0;
+    private int currentStage = 0;
     Player player;
     GameManager gameManager;
 
@@ -25,7 +28,7 @@ public class UIScore : MonoBehaviour
         player = FindObjectOfType<Player>();
         player.onCollect += OnScoreChange;
         gameManager = FindObjectOfType<GameManager>();
-        gameManager.OnStageChange += ShowChangeState;
+        gameManager.OnStageChange += NextStage;
         gameManager.OnResetLevel += ResetStage;
         stageText.text = "STAGE - 0";
         scoreText.text = "Score - 0";
@@ -53,7 +56,6 @@ public class UIScore : MonoBehaviour
         }
         scoreText.color = Color.Lerp(glowDownColor, glowUpColor, t);
         stageText.color = Color.Lerp(glowDownColor, glowUpColor, t);
-        
     }
 
     void OnScoreChange(int score) 
@@ -62,15 +64,15 @@ public class UIScore : MonoBehaviour
         scoreText.text = "Score - " + currentScore.ToString();
     }
 
-    void ShowChangeState()
+    void NextStage()
     {
-        stage++;
-        stageText.text = "STAGE - " + stage.ToString();
+        currentStage++;
+        stageText.text = "STAGE - " + currentStage.ToString();
     }
 
     void ResetStage()
     {
-        stage=0;
-        stageText.text = "STAGE - " + stage.ToString();
+        currentStage=0;
+        stageText.text = "STAGE - " + currentStage.ToString();
     }
 }
