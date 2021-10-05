@@ -25,7 +25,7 @@ public class CameraMovement : MonoBehaviour
         }
         gameManager.OnResetLevel += ResetPosition;
     }
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         Movement();
     } 
