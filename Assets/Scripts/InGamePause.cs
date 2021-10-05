@@ -2,8 +2,8 @@
 public class InGamePause : MonoBehaviour
 {
     bool isPause = false;
-    public CanvasGroup[] pauseOn;
-    public CanvasGroup[] pauseOff;
+    public CanvasGroup panelPause;
+    public CanvasGroup panelGame;
 
     void Update()
     {
@@ -17,20 +17,35 @@ public class InGamePause : MonoBehaviour
         Time.timeScale = isPause ? 1 : 0;
         isPause = !isPause;
 
-        for (int i = 0; i < pauseOn.Length; i++)
+        if (isPause)
         {
-            pauseOn[i].alpha = isPause ? 1 : 0;
-            pauseOn[i].blocksRaycasts = isPause;
-            pauseOn[i].interactable = isPause;
+            EnableCanvasGroup(panelGame, false);
+            EnableCanvasGroup(panelPause, true);
         }
-        for (int i = 0; i < pauseOff.Length; i++)
+        else
         {
-            pauseOff[i].alpha = !isPause ? 0 : 1;
-            pauseOff[i].blocksRaycasts = !isPause;
-            pauseOff[i].interactable = !isPause;
+            EnableCanvasGroup(panelGame, true);
+            EnableCanvasGroup(panelPause, false);
         }
     }
-
+    void EnableCanvasGroup(CanvasGroup canvasGroup, bool on)
+    {
+        canvasGroup.alpha = on ? 1 : 0;
+        canvasGroup.blocksRaycasts = on;
+        canvasGroup.interactable = on;
+    }
+    public void ChangeVolumeMaster(float vol)
+    {
+        AudioGameManager.Get().SetMasterVolume(vol);
+    }
+    public void ChangeVolumeEffect(float vol)
+    {
+        AudioGameManager.Get().SetEffectVolume(vol);
+    }
+    public void ChangeVolumeMusic(float vol)
+    {
+        AudioGameManager.Get().SetMusicVolume(vol);
+    }
     public void BackToMenu()
     {
         SceneManager.Get().LoadSceneAsync("MainMenu");

@@ -17,12 +17,9 @@ public class UIScore : MonoBehaviour
     bool alphaUp = true;
     float t = 0;
     int currentScore = 0;
+    private Player player;
+    private GameManager gameManager;
 
-    private int currentStage = 0;
-    Player player;
-    GameManager gameManager;
-
-    // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -36,8 +33,6 @@ public class UIScore : MonoBehaviour
         stageText.color = glowDownColor;
         stageText.alpha = 0;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (glowingUp)
@@ -59,32 +54,26 @@ public class UIScore : MonoBehaviour
         scoreText.color = Color.Lerp(glowDownColor, glowUpColor, t);
         ShowStage();
     }
-
     void OnScoreChange(int score) 
     {
         currentScore += score;
         scoreText.text = "Score - " + currentScore.ToString();
     }
-
-    void NextStage()
+    void NextStage(int currentStage)
     {
-        currentStage++;
         stageText.text = "STAGE - " + currentStage.ToString();
         firstShow = true;
         alphaUp = true;
     }
-
     void ResetStage()
     {
-        currentStage = 0;
         currentScore = 0;
         scoreText.text = "Score - " + currentScore.ToString();
-        stageText.text = "STAGE - " + currentStage.ToString();
+        stageText.text = "STAGE - 0";
         stageText.color = new Color(stageText.color.r, stageText.color.g, stageText.color.b, 0);
         firstShow = true;
         alphaUp = true;
     }
-
     void ShowStage()
     {
         if (stageText.color.a < 1 && firstShow && alphaUp)

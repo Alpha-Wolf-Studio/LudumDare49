@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 public class UIMenuManager : MonoBehaviour
@@ -7,6 +8,11 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private float timeTransition;
     [Space(10)] 
     [SerializeField] private TextMeshProUGUI versionText;
+
+    private void Awake()
+    {
+        AudioGameManager.Get().FindUiSliderRef();
+    }
 
     void Start()
     {
@@ -72,5 +78,17 @@ public class UIMenuManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    public void ChangeVolumeMaster(float vol)
+    {
+        AudioGameManager.Get().SetMasterVolume(vol);
+    }
+    public void ChangeVolumeEffect(float vol)
+    {
+        AudioGameManager.Get().SetEffectVolume(vol);
+    }
+    public void ChangeVolumeMusic(float vol)
+    {
+        AudioGameManager.Get().SetMusicVolume(vol);
     }
 }

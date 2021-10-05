@@ -15,4 +15,8 @@ public class Funcs : MonoBehaviour
     {
         return playerLayerMask == (playerLayerMask | (1 << layer));
     }
+    public bool LayerEqualPlatform(int layer)
+    {
+        return platformLayerMask == (platformLayerMask | (1 << layer));
+    }
 }

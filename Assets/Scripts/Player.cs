@@ -65,33 +65,41 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        if (isGrounded)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && jumps < maxJumps)
         {
-            jumps = 0;
-        }
-
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && jumps < maxJumps - 1)
-        {
+            Debug.Log("Saltos: " + jumps);
+            isGrounded = false;
             jumps++;
             rb.velocity = new Vector2(rb.velocity.x, 0.0f);
             rb.AddForce((Vector2.up * jumpForce), ForceMode2D.Impulse);
-            if (jumps == 1) onJump?.Invoke();
-            else onDoubleJump?.Invoke();
-        }
-        else
-        {
-            if (!isGrounded && GroundCheck()) onGround?.Invoke();
-            isGrounded = GroundCheck();
+            if (jumps == 1) 
+                onJump?.Invoke();
+            else 
+                onDoubleJump?.Invoke();
         }
         anim.SetBool(isGroundedAnimationBool, isGrounded);
         HandleMovement();
     }
 
-    private bool GroundCheck()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, Vector3.down, box.bounds.size.y, platformLayers);
-        return raycastHit2D;
+        if (Funcs.Get().LayerEqualPlatform(other.gameObject.layer))
+        {
+            if (transform.position.y > other.transform.position.y)
+            {
+                Debug.Log("Reser Jumps.");
+                jumps = 0;
+                isGrounded = true;
+                onGround?.Invoke();
+            }
+        }
     }
+
+    //private bool GroundCheck()
+    //{
+    //    RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, Vector3.down, box.bounds.size.y, platformLayers);
+    //    return raycastHit2D;
+    //}
 
     private void HandleMovement()
     {

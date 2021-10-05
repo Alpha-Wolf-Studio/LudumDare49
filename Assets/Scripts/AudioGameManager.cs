@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Audio;
 public class AudioGameManager : MonoBehaviourSingleton<AudioGameManager>
 {
@@ -9,7 +11,9 @@ public class AudioGameManager : MonoBehaviourSingleton<AudioGameManager>
     private float maxVol = 20;
     private float minVol = -30;
     private float distVol;
-    
+
+    private UiSliderRef sliders;
+    private List<float> sliderValue = new List<float>();
 
     public enum Sounds     // Esto se ordena dependiendo del array objectsSounds !!
     {
@@ -24,23 +28,30 @@ public class AudioGameManager : MonoBehaviourSingleton<AudioGameManager>
 
     private void Start()
     {
-
-        if (!player)
-        {
-            player = FindObjectOfType<Player>();
-            Debug.LogWarning("player no está asignado.", gameObject);
-        }
-        if (player)SubscribeAllEvents();         //Todo: Descomentar cuando haya audios.
+        sliderValue.Add(7);
+        sliderValue.Add(6);
+        sliderValue.Add(4);
     }
-
+    void SetSliderValue()
+    {
+        for (int i = 0; i < sliders.sliders.Length; i++)
+        {
+            sliders.sliders[i].value = sliderValue[i];
+        }
+    }
+    public void FindUiSliderRef()
+    {
+        sliders = FindObjectOfType<UiSliderRef>();
+        Invoke(nameof(SetSliderValue), 0.1f);
+    }
     public void SetPlayer(Player p)
     {
         player = p;
         SubscribeAllEvents();
     }
-
     private void SubscribeAllEvents()
     {
+        FindUiSliderRef();
         player.onDie += OnDie;
         player.onJump += OnJump;
         player.onDoubleJump += OnDoubleJump;
@@ -79,6 +90,8 @@ public class AudioGameManager : MonoBehaviourSingleton<AudioGameManager>
         {
             audioMixer[0].SetFloat("MasterVolume", minVol + volume * distVol);
         }
+
+        sliderValue[0] = volume;
     }
 
     public void SetEffectVolume(float volume)
@@ -92,6 +105,7 @@ public class AudioGameManager : MonoBehaviourSingleton<AudioGameManager>
         {
             audioMixer[1].SetFloat("EffectsVolume", minVol + volume * distVol);
         }
+        sliderValue[1] = volume;
 
     }
     public void SetMusicVolume(float volume)
@@ -105,6 +119,7 @@ public class AudioGameManager : MonoBehaviourSingleton<AudioGameManager>
         {
             audioMixer[2].SetFloat("MusicVolume", minVol + volume * distVol);
         }
+        sliderValue[2] = volume;
     }
 
     public void MenuMusic()

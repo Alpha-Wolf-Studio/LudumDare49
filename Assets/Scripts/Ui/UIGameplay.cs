@@ -15,7 +15,9 @@ public class UIGameplay : MonoBehaviour
     float aux = 0;
 
     Rect startingRect;
+     
 
+    public Slider[] sliders;
     private void Awake()
     {
         startingRect = backgroundImage.uvRect;
@@ -23,7 +25,7 @@ public class UIGameplay : MonoBehaviour
 
     private void Start()
     {
-        AudioGameManager.Get().GameplayMusic();    
+        AudioGameManager.Get().GameplayMusic();
     }
 
     private void Update()
