@@ -1523,6 +1523,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601515882089318950, guid: 243ee9da926da264282f00226b817a99,
         type: 3}
+      propertyPath: musics.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3138c978806089149ab878489cbec5cf, type: 3}
+    - target: {fileID: 1601515882089318950, guid: 243ee9da926da264282f00226b817a99,
+        type: 3}
+      propertyPath: musics.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 72a3aec59c8981043977cd85697c8bc5, type: 3}
+    - target: {fileID: 1601515882089318950, guid: 243ee9da926da264282f00226b817a99,
+        type: 3}
       propertyPath: sliderValue.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1605,7 +1615,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 23668d5658e5bd945b625e0c4a1e2ce1, type: 3}
+      objectReference: {fileID: 8300000, guid: 3138c978806089149ab878489cbec5cf, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 243ee9da926da264282f00226b817a99, type: 3}
 --- !u!1 &1164788880
@@ -2049,6 +2059,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GamePlay
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1261126557}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1261126560
